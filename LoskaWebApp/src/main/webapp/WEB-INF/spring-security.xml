@@ -8,27 +8,20 @@
         http://www.springframework.org/schema/security 
             http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
-    <!-- osoitteiden rajoitus -->
-    <http use-expressions="true">
-        <intercept-url pattern="/admin/**" access="hasRole('lecturer') or hasRole('assistant')" />
-        <intercept-url pattern="/student/**" access="hasRole('student')" />
-        <intercept-url pattern="/**" access="permitAll" />
+    <http auto-config="true">
+        <intercept-url pattern="/welcome*" access="ROLE_USER" />
+        <!-- show login form -->
+        <form-login login-page="/login" default-target-url="/welcome"
+        authentication-failure-url="/loginfailed"/>
         
-        <!-- huom! kun teet sovellusta tuotantokäyttöä varten, permitAll-oletus ei ole hyvä idea! /** -->
-        
-        <!-- näytä kirjautumislomake tarvittaessa -->
-        <form-login />
-        <!-- mahdollisuus logouttiin, ohjaus logoutin jälkeen osoitteeseen /home -->
-        <logout logout-success-url="/home" />
+        <logout logout-success-url="/logout" />
     </http>
     
-    <!-- dummy-käyttäjät -->
+    <!-- dummy users -->
     <authentication-manager>
         <authentication-provider>
             <user-service>
-                <user name="matti" password="bonus" authorities="lecturer, assistant, student" />
-                <user name="mikael" password="mccartney" authorities="assistant, student" />
-                <user name="arto" password="av" authorities="student" />
+                <user name="matti" password="bonus" authorities="ROLE_USER" />
             </user-service>
         </authentication-provider>
     </authentication-manager>
