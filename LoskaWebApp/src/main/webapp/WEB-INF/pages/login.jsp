@@ -38,5 +38,7 @@
 		</table>
  
 	</form>
+	<br>
+	<a href='<c:url value="/newUser"/>'>Create new user account.</a>
 </body>
 </html>

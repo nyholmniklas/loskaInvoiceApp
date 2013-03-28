@@ -33,7 +33,9 @@
         <!-- konfiguraatiotiedosto tietoturvalle -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/spring-security.xml, /WEB-INF/datasource.xml</param-value>
+        <param-value>/WEB-INF/spring-security.xml, 
+        /WEB-INF/Spring-Datasource.xml,
+        /WEB-INF/user/Spring-User.xml</param-value>
     </context-param>
     
     <listener>
