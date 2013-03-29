@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" 
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
@@ -11,7 +11,7 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>/WEB-INF/spring-context.xml</param-value>
+            <param-value>/WEB-INF/web-context/spring-context.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>        
@@ -33,9 +33,9 @@
         <!-- konfiguraatiotiedosto tietoturvalle -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/spring-security.xml, 
-        /WEB-INF/Spring-Datasource.xml,
-        /WEB-INF/user/Spring-User.xml</param-value>
+        <param-value>
+        /WEB-INF/web-context/*.xml
+        </param-value>
     </context-param>
     
     <listener>

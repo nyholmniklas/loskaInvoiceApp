@@ -5,7 +5,8 @@
 <title>Luo Uusi Käyttäjätili</title>
 </head>
 <body>
-	<h1>Luo Uusi Käyttäjätili</h1>
+	<jsp:include page="header.jsp" />
+	<h2>Luo Uusi Käyttäjätili</h2>
 	<form:form method="POST" action="newUser" modelAttribute="user">
 		<table>
 			<tr>

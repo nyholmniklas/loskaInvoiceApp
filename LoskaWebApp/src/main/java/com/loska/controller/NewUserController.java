@@ -26,7 +26,7 @@ public class NewUserController {
 	public ModelAndView createNewUser(@ModelAttribute("SpringWeb")User user,
 			ModelMap model){
 		userDAO.insert(user);
-		return new ModelAndView("hello");
+		return new ModelAndView("index");
 	}
 	
 }

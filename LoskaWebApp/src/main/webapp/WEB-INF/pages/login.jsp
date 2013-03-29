@@ -8,13 +8,14 @@
 	<c:if test="${not empty error}">
 		<div class="errorblock">
 			Sis‰‰nkirjautuminen ep‰onnistui. Yrit‰ uudestaan.<br /> 
-<%-- 			Caused :${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message} --%>
+			Caused :${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
 		</div>
 	</c:if>
 	</h3>
+<%-- 	 		<jsp:include page="header.jsp"/> --%>
+	 		<h2>Kirjaudu Sis‰‰n</h2>
 		<form name='f' action="<c:url value='j_spring_security_check' />"
 		method='POST'>
- 		<h1>Tervetuloa Loska Laskutusj‰rjestelm‰‰n</h1>
 		<table>
 			<tr>
 				<td>K‰ytt‰j‰tunnus:</td>

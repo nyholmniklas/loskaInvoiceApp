@@ -11,6 +11,7 @@ public class JdbcUserDAO implements UserDAO{
 	
 	@Override
 	public void insert(User user) {
+		//TODO give user ROLE_USER and somehow update user object in this context(id doesnt update)
 		String sql = "INSERT INTO users (username, password, enabled)"
 				+ "VALUES (?, ?, '1');";
 		Connection conn = null;
@@ -20,6 +21,7 @@ public class JdbcUserDAO implements UserDAO{
 			ps.setString(1, user.getUsername());
 			ps.setString(2, user.getPassword());
 			ps.executeUpdate();
+			System.out.println("User_id is " + user.getUserId());
 			ps.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

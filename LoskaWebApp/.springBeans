@@ -5,11 +5,27 @@
 	<configSuffixes>
 		<configSuffix><![CDATA[xml]]></configSuffix>
 	</configSuffixes>
-	<enableImports><![CDATA[false]]></enableImports>
+	<enableImports><![CDATA[true]]></enableImports>
 	<configs>
-		<config>src/main/webapp/WEB-INF/user/Spring-User.xml</config>
-		<config>src/main/webapp/WEB-INF/Spring-Datasource.xml</config>
+		<config>src/main/webapp/WEB-INF/web-context/spring-context.xml</config>
+		<config>src/main/webapp/WEB-INF/web-context/Spring-Datasource.xml</config>
+		<config>src/main/webapp/WEB-INF/web-context/spring-security.xml</config>
+		<config>src/main/webapp/WEB-INF/web-context/Spring-User.xml</config>
 	</configs>
 	<configSets>
+		<configSet>
+			<name><![CDATA[web-context]]></name>
+			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
+			<incomplete>false</incomplete>
+			<configs>
+				<config>src/main/webapp/WEB-INF/web.xml</config>
+				<config>src/main/webapp/WEB-INF/web-context/spring-context.xml</config>
+				<config>src/main/webapp/WEB-INF/web-context/Spring-Datasource.xml</config>
+				<config>src/main/webapp/WEB-INF/web-context/spring-security.xml</config>
+				<config>src/main/webapp/WEB-INF/web-context/Spring-User.xml</config>
+			</configs>
+			<profiles>
+			</profiles>
+		</configSet>
 	</configSets>
 </beansProjectDescription>
