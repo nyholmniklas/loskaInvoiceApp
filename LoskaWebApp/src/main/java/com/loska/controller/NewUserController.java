@@ -1,5 +1,6 @@
 package com.loska.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,6 +13,9 @@ import com.loska.model.user.UserDAO;
 
 @Controller
 public class NewUserController {
+	
+	@Autowired
+	private UserDAO userDAO;
 
 	@RequestMapping(value="/newUser", method=RequestMethod.GET)
 	public ModelAndView createNewUser(ModelMap model){
@@ -21,6 +25,7 @@ public class NewUserController {
 	@RequestMapping(value="/newUser", method=RequestMethod.POST)
 	public ModelAndView createNewUser(@ModelAttribute("SpringWeb")User user,
 			ModelMap model){
+		userDAO.insert(user);
 		return new ModelAndView("hello");
 	}
 	
