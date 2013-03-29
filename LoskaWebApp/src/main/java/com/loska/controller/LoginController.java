@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class LoginController {
 
-	@RequestMapping(value="/welcome", method = RequestMethod.GET)
-	public String printWelcome(ModelMap model, Principal principal) {
-		String name = principal.getName();
-		model.addAttribute("username", name);
-		model.addAttribute("message", "Spring security example form ");
-		return "hello";
-	}
+//	@RequestMapping(value="/welcome", method = RequestMethod.GET)
+//	public String printWelcome(ModelMap model, Principal principal) {
+//		String name = principal.getName();
+//		model.addAttribute("username", name);
+//		model.addAttribute("message", "Spring security example form ");
+//		return "hello";
+//	}
 	
 	@RequestMapping(value="/login", method = RequestMethod.GET)
 	public String login(ModelMap model) {

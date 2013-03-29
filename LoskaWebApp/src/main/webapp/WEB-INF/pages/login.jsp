@@ -14,7 +14,7 @@
 	</h3>
 		<form name='f' action="<c:url value='j_spring_security_check' />"
 		method='POST'>
- 
+ 		<h1>Tervetuloa Loska Laskutusj‰rjestelm‰‰n</h1>
 		<table>
 			<tr>
 				<td>K‰ytt‰j‰tunnus:</td>
@@ -35,6 +35,6 @@
  
 	</form>
 	<br>
-	<a href='<c:url value="/newUser"/>'>Create new user account.</a>
+	<a href='<c:url value="/newUser"/>'>Luo uusi k‰ytt‰j‰tili.</a>
 </body>
 </html>
