@@ -12,7 +12,7 @@
 		</div>
 	</c:if>
 	</h3>
-<%-- 	 		<jsp:include page="header.jsp"/> --%>
+	 		<jsp:include page="header.jsp"/>
 	 		<h2>Kirjaudu Sisään</h2>
 		<form name='f' action="<c:url value='j_spring_security_check' />"
 		method='POST'>

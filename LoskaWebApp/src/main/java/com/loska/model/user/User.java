@@ -1,15 +1,16 @@
 package com.loska.model.user;
 
 public class User {
-	int userId;
+	int user_id;
 	String username;
 	String password;
 	boolean enabled;
-	public int getUserId() {
-		return userId;
+	
+	public int getUser_Id() {
+		return user_id;
 	}
 	public void setUserId(int userId) {
-		this.userId = userId;
+		this.user_id = userId;
 	}
 	public String getUsername() {
 		return username;

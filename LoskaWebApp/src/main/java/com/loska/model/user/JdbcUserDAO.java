@@ -1,9 +1,14 @@
 package com.loska.model.user;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.sql.DataSource;
+
+
 
 public class JdbcUserDAO implements UserDAO{
 
@@ -17,11 +22,18 @@ public class JdbcUserDAO implements UserDAO{
 		Connection conn = null;
 		try {
 			conn = dataSource.getConnection();
-			java.sql.PreparedStatement ps = conn.prepareStatement(sql);
+			PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, user.getUsername());
 			ps.setString(2, user.getPassword());
 			ps.executeUpdate();
-			System.out.println("User_id is " + user.getUserId());
+			ResultSet rs = ps.getGeneratedKeys();
+			System.out.println(rs.toString());
+			int id = 0;
+			if(rs.next()) {
+				id = rs.getInt(1);
+			}
+			user.setUserId(id);
+			insertUserRole(conn, user);
 			ps.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -35,6 +47,15 @@ public class JdbcUserDAO implements UserDAO{
 				}
 			}
 		}
+		
+	}
+	
+	//Set auth ROLE_USER for user
+	private void insertUserRole(Connection conn, User user) throws SQLException{
+		String sql = "INSERT INTO user_roles (user_id, authority) " +
+				"VALUES (" + user.getUser_Id() + ", 'ROLE_USER');";
+		PreparedStatement statement = conn.prepareStatement(sql);
+		statement.executeUpdate();
 	}
 
 	@Override
