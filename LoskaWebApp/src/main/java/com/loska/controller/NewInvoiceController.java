@@ -15,11 +15,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.loska.dao.InvoiceDAO;
 import com.loska.model.invoice.Invoice;
+import com.loska.session.UserSession;
 
 @Controller
 @RequestMapping(value="/newInvoice")
 public class NewInvoiceController {
-	
+	@Autowired
+	private UserSession userSession;
 	@Autowired
 	private InvoiceDAO invoiceDAO;
 	@Autowired
@@ -41,7 +43,7 @@ public class NewInvoiceController {
 			java.util.Calendar cal = java.util.Calendar.getInstance(); 
 			java.sql.Date date = new Date(cal.getTimeInMillis());
 			invoice.setDate(date);
-			invoice.setUser_id(1);
+			invoice.setUser_id(userSession.getUserId());
 			invoiceDAO.insert(invoice);
 		}
 		return "redirect:index";
