@@ -8,6 +8,8 @@
 <body>
  		<jsp:include page="header.jsp"/>
  		<h2>Tervetuloa</h2>
+ 			<br>
+	<a href='<c:url value="/newInvoice"/>'>Luo uusi lasku.</a>
  		<br>
  		<a href="<c:url value="/j_spring_security_logout" />">Kirjaudu ulos</a>
 </body>

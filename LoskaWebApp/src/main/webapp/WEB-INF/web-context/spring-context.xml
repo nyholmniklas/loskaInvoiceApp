@@ -25,6 +25,8 @@
 		<value>.jsp</value>
 	  </property>
 	</bean>
+	
+	<bean id="user-session" class="com.loska.session.UserSession" scope="session"/>
  
     
     <mvc:annotation-driven /> 

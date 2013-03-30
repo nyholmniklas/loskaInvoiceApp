@@ -8,6 +8,7 @@ import com.loska.model.invoice.Invoice;
 
 @Component
 public interface InvoiceDAO {
+	public abstract void insert(Invoice invoice);
 	public abstract Invoice findInvoiceById(int id);
 	public abstract List<Invoice> getAllInvoicesBelongingToUserId(int user_Id);
 }

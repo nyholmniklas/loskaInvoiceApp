@@ -6,5 +6,9 @@
 	<bean id="userDAO" class="com.loska.dao.impl.JdbcUserDAO">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	
+		<bean id="invoiceDAO" class="com.loska.dao.impl.JdbcInvoiceDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
  
 </beans>
