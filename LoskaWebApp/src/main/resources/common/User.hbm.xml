@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping>
+    <class name="com.loska.model.user.User" table="users">
+        <id name="user_Id" type="java.lang.Integer">
+            <column name="user_Id" />
+            <generator class="identity" />
+        </id>
+        <property name="username" type="string">
+            <column name="USERNAME" length="10" not-null="true" unique="true" />
+        </property>
+<!--         <property name="stockName" typeiled.org.hibernate.MappingNotFoundException: resource: com/loska/resources/common/User.hbm.xml not found 30.3.2013 1:30:38 org.apache.catalina.core.StandardContext="string"> -->
+<!--             <column name="STOCK_NAME" length="20" not-null="true" unique="true" /> -->
+<!--         </property> -->
+    </class>
+</hibernate-mapping>

@@ -1,21 +1,27 @@
 package com.loska.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.loska.dao.UserDAO;
 import com.loska.model.user.User;
-import com.loska.model.user.UserDAO;
 
 @Controller
 public class NewUserController {
 	
 	@Autowired
 	private UserDAO userDAO;
+	@Autowired
+	private Validator validator;
 
 	@RequestMapping(value="/newUser", method=RequestMethod.GET)
 	public ModelAndView createNewUser(ModelMap model){
@@ -23,10 +29,14 @@ public class NewUserController {
 	}
 	
 	@RequestMapping(value="/newUser", method=RequestMethod.POST)
-	public ModelAndView createNewUser(@ModelAttribute("SpringWeb")User user,
+	public String createNewUser(@Valid User user, BindingResult result,
 			ModelMap model){
-		userDAO.insert(user);
-		return new ModelAndView("index");
+//		validator.validate(user, result);
+		if (result.hasErrors()) {
+			return "newUser";
+		}
+		else userDAO.insert(user);
+		return new String("index");
 	}
 	
 }

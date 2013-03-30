@@ -16,6 +16,7 @@
 			<tr>
 				<td><form:label path="password">Salasana:</form:label></td>
 				<td><form:password path="password" /></td>
+				<td><form:errors path="password"/></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="Rekisteröidy" /></td>
