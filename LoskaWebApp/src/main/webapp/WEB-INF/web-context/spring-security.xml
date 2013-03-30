@@ -1,24 +1,27 @@
-<beans:beans xmlns="http://www.springframework.org/schema/security"
-	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:security="http://www.springframework.org/schema/security"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans 
             http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
         http://www.springframework.org/schema/security 
             http://www.springframework.org/schema/security/spring-security-3.1.xsd">
-<http pattern="/login" security="none"/>
+<security:http pattern="/login" security="none"/>
 
-	<http auto-config="true">
-		<intercept-url pattern="/newUser" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-				<intercept-url pattern="/index" access="ROLE_USER" />
-		<intercept-url pattern="/*" access="ROLE_USER" />
+	<security:http auto-config="true">
+		<security:intercept-url pattern="/newUser" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+				<security:intercept-url pattern="/index" access="ROLE_USER" />
+		<security:intercept-url pattern="/*" access="ROLE_USER" />
 		<!-- show login form -->
-		<form-login login-page="/login" default-target-url="/index" authentication-failure-url="/loginfailed" />
-		<logout logout-success-url="/logout" />
-	</http>
+		<security:form-login login-page="/login" default-target-url="/index" authentication-failure-url="/loginfailed" />
+		<security:logout logout-success-url="/logout" />
+	</security:http>
+	
+<!-- 	<bean id="authSuccessHandler" class="com.loska.session.LoskaAuthSuccessHandler"/> -->
 
-	<authentication-manager>
-		<authentication-provider>
-			<jdbc-user-service data-source-ref="dataSource"
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:jdbc-user-service data-source-ref="dataSource"
 				users-by-username-query="
 		      select username,password, enabled 
 		      from users where username=?"
@@ -26,6 +29,6 @@
 				authorities-by-username-query="
 		      select u.username, ur.authority from users u, user_roles ur 
 		      where u.user_id = ur.user_id and u.username =?  " />
-		</authentication-provider>
-	</authentication-manager>
-</beans:beans>
+		</security:authentication-provider>
+	</security:authentication-manager>
+</beans>

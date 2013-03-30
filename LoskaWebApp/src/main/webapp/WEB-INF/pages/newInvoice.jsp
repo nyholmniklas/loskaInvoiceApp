@@ -16,7 +16,7 @@
 			</tr>
 			<tr>
 				<td><form:label path="totalsum">Summa:</form:label></td>
-				<td><form:password path="totalsum" /></td>
+				<td><form:input path="totalsum" /></td>
 				<td><form:errors path="totalsum" /></td>
 			</tr>
 			<tr>

@@ -18,6 +18,7 @@ public class IndexController {
 	private UserSession userSession;
 	@Autowired
 	private UserDAO userDAO;
+
 //	
 //	@RequestMapping(value="/index", method = RequestMethod.POST)
 //	public String loginSuccess(ModelMap model, Principal principal) {
@@ -27,7 +28,7 @@ public class IndexController {
 	
 	@RequestMapping(value="/index", method = RequestMethod.GET)
 	public String index(ModelMap model, Principal principal) {
-		userSession.setUserId(userDAO.findByUsername(principal.getName()));
+		if(userSession.getUserId() == 0)userSession.setUserId(userDAO.findByUsername(principal.getName()));
 		return "index";
 	}
 }
