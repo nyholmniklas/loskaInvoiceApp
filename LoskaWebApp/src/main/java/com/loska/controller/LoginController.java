@@ -23,7 +23,6 @@ public class LoginController {
 	
 	@RequestMapping(value="/login", method = RequestMethod.GET)
 	public String login(ModelMap model) {
-	
 		return "login";
 	}
 	

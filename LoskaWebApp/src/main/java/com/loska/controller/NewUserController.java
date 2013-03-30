@@ -35,8 +35,10 @@ public class NewUserController {
 		if (result.hasErrors()) {
 			return "newUser";
 		}
-		else userDAO.insert(user);
-		return new String("index");
+		else {
+			userDAO.insert(user);
+		}
+		return new String("login");
 	}
 	
 }

@@ -18,17 +18,22 @@ public class IndexController {
 	private UserSession userSession;
 	@Autowired
 	private UserDAO userDAO;
+	
+	@RequestMapping(value="/index", method = RequestMethod.POST)
+	public String index(ModelMap model, Principal principal) {
 
-//	
-//	@RequestMapping(value="/index", method = RequestMethod.POST)
-//	public String loginSuccess(ModelMap model, Principal principal) {
-//
+		return "index";
+	}
+	
+//	@RequestMapping(value="/login", method = RequestMethod.POST)
+//	public String logdin(ModelMap model, Principal principal) {
+//		userSession.setUserId(userDAO.findByUsername(principal.getName()));
 //		return "index";
 //	}
 	
 	@RequestMapping(value="/index", method = RequestMethod.GET)
-	public String index(ModelMap model, Principal principal) {
-		if(userSession.getUserId() == 0)userSession.setUserId(userDAO.findByUsername(principal.getName()));
+	public String loginSuccess(ModelMap model, Principal principal) {
+		userSession.setUserId(userDAO.findByUsername(principal.getName()));
 		return "index";
 	}
 }
