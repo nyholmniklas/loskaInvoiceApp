@@ -9,7 +9,7 @@ import java.sql.Statement;
 import javax.sql.DataSource;
 
 import com.loska.dao.UserDAO;
-import com.loska.model.user.User;
+import com.loska.model.User;
 
 
 

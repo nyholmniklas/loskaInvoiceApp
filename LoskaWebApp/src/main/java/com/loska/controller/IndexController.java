@@ -3,7 +3,6 @@ package com.loska.controller;
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,12 +23,6 @@ public class IndexController {
 
 		return "index";
 	}
-	
-//	@RequestMapping(value="/login", method = RequestMethod.POST)
-//	public String logdin(ModelMap model, Principal principal) {
-//		userSession.setUserId(userDAO.findByUsername(principal.getName()));
-//		return "index";
-//	}
 	
 	@RequestMapping(value="/index", method = RequestMethod.GET)
 	public String loginSuccess(ModelMap model, Principal principal) {

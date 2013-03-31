@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.loska.dao.InvoiceDAO;
-import com.loska.model.invoice.Invoice;
+import com.loska.model.Invoice;
 import com.loska.session.UserSession;
 
 @Controller

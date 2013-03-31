@@ -2,7 +2,7 @@ package com.loska.dao;
 
 import org.springframework.stereotype.Component;
 
-import com.loska.model.user.User;
+import com.loska.model.User;
 
 @Component
 public interface UserDAO {

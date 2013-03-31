@@ -3,7 +3,7 @@ package com.loska.session;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.loska.model.user.User;
+import com.loska.model.User;
 
 @Component
 @Scope(value="session")

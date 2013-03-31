@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.loska.dao.UserDAO;
-import com.loska.model.user.User;
+import com.loska.model.User;
 
 @Controller
 public class NewUserController {
@@ -32,8 +31,6 @@ public class NewUserController {
 	@RequestMapping(value="/newUser", method=RequestMethod.POST)
 	public String createNewUser(@Valid @ModelAttribute User user, BindingResult result,
 			ModelMap model){
-//		validator.validate(user, result);
-		
 		//check if username is taken
 		if (userDAO.findByUsername(user.getUsername()) != null) {
 			result.rejectValue("username", "UserNameTaken", "Käyttäjätunnus on jo olemassa.");
@@ -44,6 +41,8 @@ public class NewUserController {
 		if (result.hasErrors()) {
 			return "newUser";
 		}
+		
+		//create new user
 		else {
 			userDAO.insert(user);
 		}

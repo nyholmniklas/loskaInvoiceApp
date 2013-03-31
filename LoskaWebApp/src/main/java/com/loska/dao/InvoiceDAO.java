@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.loska.model.invoice.Invoice;
+import com.loska.model.Invoice;
 
 @Component
 public interface InvoiceDAO {

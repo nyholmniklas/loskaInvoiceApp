@@ -1,4 +1,4 @@
-package com.loska.model.user;
+package com.loska.model;
 
 import javax.validation.constraints.NotNull;
 
@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class User {
 	int user_id;
-	
 	String username;
-	
 	@NotBlank
 	String password;
 	boolean enabled;

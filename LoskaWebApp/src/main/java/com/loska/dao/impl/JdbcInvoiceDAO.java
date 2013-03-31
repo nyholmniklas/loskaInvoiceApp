@@ -11,7 +11,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import com.loska.dao.InvoiceDAO;
-import com.loska.model.invoice.Invoice;
+import com.loska.model.Invoice;
 
 public class JdbcInvoiceDAO implements InvoiceDAO {
 

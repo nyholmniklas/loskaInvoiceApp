@@ -21,7 +21,8 @@
 			</tr>
 			<tr>
 				<td><input type="submit" value="Luo lasku" /></td>
-				<td><a href='<c:url value="/index"/>'><input type="button" value="Peruuta"/></a></td>
+				<td><a href='<c:url value="/index"/>'><input type="button"
+						value="Peruuta" /></a></td>
 			</tr>
 		</table>
 	</form:form>

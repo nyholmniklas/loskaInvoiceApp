@@ -1,17 +1,27 @@
-package com.loska.model.invoice;
+package com.loska.model;
 
 import java.sql.Date;
 
-import com.loska.model.user.User;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotBlank;
+
 
 public class Invoice {
 		private int invoice_id;
 		private int user_id;
+		@NotBlank
+		@NotNull
 		private int reference;
 		private Date date;
+		@NotBlank
+		@NotNull
 		private int buyer_id;
 		private String description;
+		@NotBlank
+		@NotNull
 		private float totalsum;
+		
 		public int getInvoice_id() {
 			return invoice_id;
 		}
