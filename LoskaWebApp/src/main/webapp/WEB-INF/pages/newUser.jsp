@@ -12,6 +12,7 @@
 			<tr>
 				<td><form:label path="username">Käyttäjätunnus: </form:label></td>
 				<td><form:input path="username" /></td>
+								<td><form:errors path="username"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="password">Salasana:</form:label></td>

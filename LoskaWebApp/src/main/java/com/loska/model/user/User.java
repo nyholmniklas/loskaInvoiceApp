@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class User {
 	int user_id;
 	
-	
 	String username;
 	
 	@NotBlank
