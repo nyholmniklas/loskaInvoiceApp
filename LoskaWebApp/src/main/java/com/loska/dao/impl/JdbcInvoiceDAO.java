@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -28,8 +29,41 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 
 	@Override
 	public List<Invoice> getAllInvoicesBelongingToUserId(int user_Id) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Invoice> invoices = new ArrayList<Invoice>();
+		String sql = "SELECT invoice_id, user_id, reference, date, buyer_id, description, totalsum " +
+				"FROM invoices WHERE user_id='"+ user_Id +"'";
+		System.out.println(sql);
+		Connection conn = null;
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Invoice i = new Invoice();
+				i.setInvoice_id(rs.getInt("invoice_id"));
+				i.setReference(rs.getInt("reference"));
+				i.setBuyer_id(rs.getInt("buyer_id"));
+				i.setDate(rs.getDate("date"));
+				i.setDescription(rs.getString("description"));
+				i.setUser_id(rs.getInt("user_id"));
+				i.setTotalsum(rs.getFloat("totalsum"));
+				invoices.add(i);
+			}
+//			insertUserRole(conn, user);
+			ps.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+			}
+		}
+		return invoices;
 	}
 
 	@Override

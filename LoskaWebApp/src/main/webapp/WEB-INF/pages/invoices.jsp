@@ -6,13 +6,15 @@
 <title>Loska</title>
 </head>
 <body>
- 		<jsp:include page="header.jsp"/>
- 		<h2>Tervetuloa</h2>
- 			<br>
-	<a href='<c:url value="/newInvoice"/>'>Luo uusi lasku</a>
-	 			<br>
-	<a href='<c:url value="/invoices"/>'>Näytä omat laskut</a>
- 		<br>
- 		<a href="<c:url value="/j_spring_security_logout" />">Kirjaudu ulos</a>
+	<jsp:include page="header.jsp" />
+	<h2>Laskut</h2>
+	<br>
+	<c:forEach items="${invoices}" var="i">
+		${i.invoice_id }<br>
+	</c:forEach>
+	<br>
+	<a href='<c:url value="/newInvoice"/>'>Luo uusi lasku.</a>
+	<br>
+	<a href="<c:url value="/j_spring_security_logout" />">Kirjaudu ulos</a>
 </body>
 </html>
