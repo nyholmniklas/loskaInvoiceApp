@@ -2,6 +2,9 @@
 <html>
 <head>
 	<title>Kirjaudu Sisään</title>
+	<link rel="stylesheet" href="css/base.css">
+		<link rel="stylesheet" href="css/skeleton.css">
+			<link rel="stylesheet" href="css/layout.css">
 </head>
 <body onload='document.f.j_username.focus();'>
 	<h3>

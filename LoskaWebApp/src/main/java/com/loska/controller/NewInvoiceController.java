@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.loska.dao.InvoiceDAO;
+import com.loska.dao.UserDAO;
 import com.loska.model.Invoice;
 import com.loska.session.UserSession;
 
@@ -25,6 +26,8 @@ public class NewInvoiceController {
 	private UserSession userSession;
 	@Autowired
 	private InvoiceDAO invoiceDAO;
+	@Autowired
+	private UserDAO userDAO;
 	@Autowired
 	private Validator validator;
 	
@@ -44,7 +47,7 @@ public class NewInvoiceController {
 			java.util.Calendar cal = java.util.Calendar.getInstance(); 
 			java.sql.Date date = new Date(cal.getTimeInMillis());
 			invoice.setDate(date);
-			invoice.setUser_id(userSession.getUserId());
+			invoice.setUser(userDAO.findByUserId(userSession.getUserId()));
 //			invoice.setDescription(model.)
 			invoiceDAO.insert(invoice);
 		}

@@ -9,7 +9,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 public class Invoice {
 		private int invoice_id;
-		private int user_id;
+		private User user;
 		@NotNull
 		private Integer reference;
 		private Date date;
@@ -25,11 +25,12 @@ public class Invoice {
 		public void setInvoice_id(int invoice_id) {
 			this.invoice_id = invoice_id;
 		}
-		public int getUser_id() {
-			return user_id;
+
+		public User getUser() {
+			return user;
 		}
-		public void setUser_id(int user_id) {
-			this.user_id = user_id;
+		public void setUser(User user) {
+			this.user = user;
 		}
 		public Integer getReference() {
 			return reference;

@@ -10,6 +10,7 @@
 
 	<security:http auto-config="true">
 		<security:intercept-url pattern="/newUser" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+				<security:intercept-url pattern="/css/*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 <!-- 				<security:intercept-url pattern="/index" access="ROLE_USER" /> -->
 		<security:intercept-url pattern="/**" access="ROLE_USER" />
 		<!-- show login form -->

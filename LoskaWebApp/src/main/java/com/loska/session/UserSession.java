@@ -1,5 +1,7 @@
 package com.loska.session;
 
+import java.io.Serializable;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -7,9 +9,8 @@ import com.loska.model.User;
 
 @Component
 @Scope(value="session")
-public class UserSession {
+public class UserSession{
 	private int userId;
-	
 	public UserSession(){
 		userId = 6;
 	}

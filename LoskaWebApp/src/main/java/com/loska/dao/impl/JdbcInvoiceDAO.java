@@ -10,12 +10,18 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.loska.dao.InvoiceDAO;
+import com.loska.dao.UserDAO;
 import com.loska.model.Invoice;
 
 public class JdbcInvoiceDAO implements InvoiceDAO {
 
 	private DataSource dataSource;
+	
+	@Autowired
+	private UserDAO userDAO;
 	
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
@@ -46,7 +52,7 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 				i.setBuyer_id(rs.getInt("buyer_id"));
 				i.setDate(rs.getDate("date"));
 				i.setDescription(rs.getString("description"));
-				i.setUser_id(rs.getInt("user_id"));
+				i.setUser(userDAO.findByUserId(rs.getInt("user_id")));
 				i.setTotalsum(rs.getFloat("totalsum"));
 				invoices.add(i);
 			}
@@ -75,7 +81,7 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql,
 					Statement.RETURN_GENERATED_KEYS);
-			ps.setInt(1, invoice.getUser_id());
+			ps.setInt(1, invoice.getUser().getUser_Id());
 			ps.setInt(2, invoice.getReference());
 			ps.setDate(3, invoice.getDate());
 //			ps.setInt(4, invoice.getBuyer_id());
