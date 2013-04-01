@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -33,7 +34,7 @@ public class NewInvoiceController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public String createNewInvoice(@Valid Invoice invoice, BindingResult result,
+	public String createNewInvoice(@Valid @ModelAttribute Invoice invoice, BindingResult result,
 			ModelMap model) {
 		if (result.hasErrors()) {
 			return "newInvoice";
@@ -44,6 +45,7 @@ public class NewInvoiceController {
 			java.sql.Date date = new Date(cal.getTimeInMillis());
 			invoice.setDate(date);
 			invoice.setUser_id(userSession.getUserId());
+//			invoice.setDescription(model.)
 			invoiceDAO.insert(invoice);
 		}
 		return "redirect:index";

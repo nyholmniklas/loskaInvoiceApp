@@ -10,18 +10,15 @@ import org.hibernate.validator.constraints.NotBlank;
 public class Invoice {
 		private int invoice_id;
 		private int user_id;
-		@NotBlank
 		@NotNull
-		private int reference;
+		private Integer reference;
 		private Date date;
-		@NotBlank
-		@NotNull
-		private int buyer_id;
+//		@NotBlank
+//		@NotNull
+		private Integer buyer_id;
 		private String description;
-		@NotBlank
 		@NotNull
-		private float totalsum;
-		
+		private Float totalsum;
 		public int getInvoice_id() {
 			return invoice_id;
 		}
@@ -34,10 +31,10 @@ public class Invoice {
 		public void setUser_id(int user_id) {
 			this.user_id = user_id;
 		}
-		public int getReference() {
+		public Integer getReference() {
 			return reference;
 		}
-		public void setReference(int reference) {
+		public void setReference(Integer reference) {
 			this.reference = reference;
 		}
 		public Date getDate() {
@@ -46,10 +43,10 @@ public class Invoice {
 		public void setDate(Date date) {
 			this.date = date;
 		}
-		public int getBuyer_id() {
+		public Integer getBuyer_id() {
 			return buyer_id;
 		}
-		public void setBuyer_id(int buyer_id) {
+		public void setBuyer_id(Integer buyer_id) {
 			this.buyer_id = buyer_id;
 		}
 		public String getDescription() {
@@ -58,12 +55,14 @@ public class Invoice {
 		public void setDescription(String description) {
 			this.description = description;
 		}
-		public float getTotalsum() {
+		public Float getTotalsum() {
 			return totalsum;
 		}
-		public void setTotalsum(float totalsum) {
+		public void setTotalsum(Float totalsum) {
 			this.totalsum = totalsum;
 		}
+		
+
 		
 		
 }

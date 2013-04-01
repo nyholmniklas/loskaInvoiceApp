@@ -69,7 +69,7 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 	@Override
 	public void insert(Invoice invoice) {
 		String sql = "INSERT INTO invoices (user_id, reference, date, " +
-				"buyer_id, description, totalsum) VALUES (?,?,?,?,?,?)";
+				"buyer_id, description, totalsum) VALUES (?,?,?,50,?,?)";
 		Connection conn = null;
 		try {
 			conn = dataSource.getConnection();
@@ -78,9 +78,9 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 			ps.setInt(1, invoice.getUser_id());
 			ps.setInt(2, invoice.getReference());
 			ps.setDate(3, invoice.getDate());
-			ps.setInt(4, invoice.getBuyer_id());
-			ps.setString(5, invoice.getDescription());
-			ps.setFloat(6, invoice.getTotalsum());
+//			ps.setInt(4, invoice.getBuyer_id());
+			ps.setString(4, invoice.getDescription());
+			ps.setFloat(5, invoice.getTotalsum());
 			ps.executeUpdate();
 			ResultSet rs = ps.getGeneratedKeys();
 			int id = 0;

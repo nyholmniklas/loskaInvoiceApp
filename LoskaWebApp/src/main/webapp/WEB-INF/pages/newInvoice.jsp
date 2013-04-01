@@ -19,6 +19,11 @@
 				<td><form:input path="totalsum" /></td>
 				<td><form:errors path="totalsum" /></td>
 			</tr>
+						<tr>
+				<td><form:label path="description">Kuvaus:</form:label></td>
+				<td><form:input type="text" path="description" /></td>
+				<td><form:errors path="description" /></td>
+			</tr>
 			<tr>
 				<td><input type="submit" value="Luo lasku" /></td>
 				<td><a href='<c:url value="/index"/>'><input type="button"
