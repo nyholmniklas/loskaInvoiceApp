@@ -21,7 +21,7 @@
 			</tr>
 						<tr>
 				<td><form:label path="description">Kuvaus:</form:label></td>
-				<td><form:input type="text" path="description" /></td>
+				<td><form:textarea path="description" /></td>
 				<td><form:errors path="description" /></td>
 			</tr>
 			<tr>

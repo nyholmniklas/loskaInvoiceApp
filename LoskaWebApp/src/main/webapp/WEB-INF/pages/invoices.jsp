@@ -8,10 +8,19 @@
 <body>
 	<jsp:include page="header.jsp" />
 	<h2>Laskut</h2>
-	<br>
-	<c:forEach items="${invoices}" var="i">
-		${i.invoice_id }<br>
-	</c:forEach>
+	<!-- 	<br> -->
+	<table>
+		<c:forEach items="${invoices}" var="i">
+			<tr>
+				<td>${i.invoice_id }</td>
+				<td>${i.reference }</td>
+				<td>${i.date }</td>
+				<td>${i.description }</td>
+				<td>${i.buyer_id }</td>
+			</tr>
+			<!-- 			<br> -->
+		</c:forEach>
+	</table>
 	<br>
 	<a href='<c:url value="/newInvoice"/>'>Luo uusi lasku.</a>
 	<br>

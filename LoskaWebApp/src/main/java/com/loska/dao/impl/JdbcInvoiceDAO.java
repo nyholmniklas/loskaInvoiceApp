@@ -82,11 +82,11 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 			ps.setString(4, invoice.getDescription());
 			ps.setFloat(5, invoice.getTotalsum());
 			ps.executeUpdate();
-			ResultSet rs = ps.getGeneratedKeys();
-			int id = 0;
-			if (rs.next()) {
-				id = rs.getInt(1);
-			}
+//			ResultSet rs = ps.getGeneratedKeys();
+//			int id = 0;
+//			if (rs.next()) {
+//				id = rs.getInt(1);
+//			}
 //			insertUserRole(conn, user);
 			ps.close();
 		} catch (SQLException e) {
