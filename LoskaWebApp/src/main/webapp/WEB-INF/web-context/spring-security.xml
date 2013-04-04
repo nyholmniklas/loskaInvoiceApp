@@ -15,11 +15,11 @@
 <!-- 				<security:intercept-url pattern="/index" access="ROLE_USER" /> -->
 		<security:intercept-url pattern="/**" access="ROLE_USER" />
 		<!-- show login form -->
-		<security:form-login login-page="/login" default-target-url="/index" authentication-failure-url="/loginfailed" />
+		<security:form-login login-page="/login" default-target-url="/index" authentication-failure-url="/loginfailed" authentication-success-handler-ref="authSuccess"/>
 		<security:logout logout-success-url="/login" />
 	</security:http>
 	
-<!-- 	<bean id="authSuccessHandler" class="com.loska.session.LoskaAuthSuccessHandler"/> -->
+	<bean id="authSuccess" class="com.loska.util.LoginSuccessHandlerImpl"/>
 
 	<security:authentication-manager>
 		<security:authentication-provider>

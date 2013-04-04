@@ -16,7 +16,7 @@
 				<td>${i.reference }</td>
 				<td>${i.date }</td>
 				<td>${i.description }</td>
-				<td>${i.buyer_id }</td>
+<%-- 				<td>${i.buyer_id }</td> --%>
 			</tr>
 			<!-- 			<br> -->
 		</c:forEach>

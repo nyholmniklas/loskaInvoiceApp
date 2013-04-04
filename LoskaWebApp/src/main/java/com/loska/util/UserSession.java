@@ -12,7 +12,6 @@ import com.loska.model.User;
 public class UserSession{
 	private int userId;
 	public UserSession(){
-		userId = 6;
 	}
 
 	public void setUserId(User user) {

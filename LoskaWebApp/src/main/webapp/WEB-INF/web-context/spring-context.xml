@@ -31,8 +31,7 @@
 		</property>
 	</bean>
 
-	<bean id="userSession" class="com.loska.util.UserSession"
-		scope="session">
+	<bean id="userSession" class="com.loska.util.UserSession">
 		<aop:scoped-proxy />
 	</bean>
 

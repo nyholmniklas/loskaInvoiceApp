@@ -59,6 +59,7 @@ public class NewInvoiceController {
 //			invoice.setDescription(model.)
 			int userId = userSession.getUserId();
 			User user = userDAO.findByUserId(userId);
+			System.out.println("User id " + userId);
 			
 			InvoiceFormConverter converter = new InvoiceFormConverter();
 			Invoice invoice = converter.convertFormToInvoice(form, user);
