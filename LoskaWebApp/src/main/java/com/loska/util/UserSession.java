@@ -1,4 +1,4 @@
-package com.loska.session;
+package com.loska.util;
 
 import java.io.Serializable;
 

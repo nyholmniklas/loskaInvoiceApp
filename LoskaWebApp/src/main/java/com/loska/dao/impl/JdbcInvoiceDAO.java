@@ -49,14 +49,14 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 				Invoice i = new Invoice();
 				i.setInvoice_id(rs.getInt("invoice_id"));
 				i.setReference(rs.getInt("reference"));
-				i.setBuyer_id(rs.getInt("buyer_id"));
+				//TEMP next line
+				i.setBuyer(null);
 				i.setDate(rs.getDate("date"));
 				i.setDescription(rs.getString("description"));
 				i.setUser(userDAO.findByUserId(rs.getInt("user_id")));
 				i.setTotalsum(rs.getFloat("totalsum"));
 				invoices.add(i);
 			}
-//			insertUserRole(conn, user);
 			ps.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -75,18 +75,22 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 	@Override
 	public void insert(Invoice invoice) {
 		String sql = "INSERT INTO invoices (user_id, reference, date, " +
-				"buyer_id, description, totalsum) VALUES (?,?,?,50,?,?)";
+				"buyer_id, description, totalsum, buyer_address, buyer_postcode," +
+				"buyer_city) VALUES (?,?,?,50,?,?,?,?,?)";
 		Connection conn = null;
 		try {
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql,
 					Statement.RETURN_GENERATED_KEYS);
 			ps.setInt(1, invoice.getUser().getUser_Id());
-			ps.setInt(2, invoice.getReference());
+			ps.setInt(2, 0);
 			ps.setDate(3, invoice.getDate());
-//			ps.setInt(4, invoice.getBuyer_id());
+			ps.setInt(4, invoice.getBuyer().getBuyerId());
 			ps.setString(4, invoice.getDescription());
 			ps.setFloat(5, invoice.getTotalsum());
+			ps.setString(6, invoice.getBuyer().getAddress());
+			ps.setString(7, invoice.getBuyer().getPostcode());
+			ps.setString(8, invoice.getBuyer().getCity());
 			ps.executeUpdate();
 //			ResultSet rs = ps.getGeneratedKeys();
 //			int id = 0;

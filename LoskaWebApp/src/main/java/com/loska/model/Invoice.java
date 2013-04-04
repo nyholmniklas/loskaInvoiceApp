@@ -15,10 +15,15 @@ public class Invoice {
 		private Date date;
 //		@NotBlank
 //		@NotNull
-		private Integer buyer_id;
+
 		private String description;
 		@NotNull
 		private Float totalsum;
+		
+		//Buyer
+		private Buyer buyer;
+
+		
 		public int getInvoice_id() {
 			return invoice_id;
 		}
@@ -44,12 +49,6 @@ public class Invoice {
 		public void setDate(Date date) {
 			this.date = date;
 		}
-		public Integer getBuyer_id() {
-			return buyer_id;
-		}
-		public void setBuyer_id(Integer buyer_id) {
-			this.buyer_id = buyer_id;
-		}
 		public String getDescription() {
 			return description;
 		}
@@ -62,8 +61,11 @@ public class Invoice {
 		public void setTotalsum(Float totalsum) {
 			this.totalsum = totalsum;
 		}
-		
-
-		
+		public Buyer getBuyer() {
+			return buyer;
+		}
+		public void setBuyer(Buyer buyer) {
+			this.buyer = buyer;
+		}
 		
 }

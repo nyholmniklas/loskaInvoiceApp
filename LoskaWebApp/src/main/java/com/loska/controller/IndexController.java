@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.loska.dao.UserDAO;
-import com.loska.session.UserSession;
+import com.loska.util.UserSession;
 
 @Controller
 public class IndexController {

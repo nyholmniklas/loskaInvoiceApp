@@ -17,7 +17,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.loska.dao.InvoiceDAO;
 import com.loska.dao.UserDAO;
 import com.loska.model.Invoice;
-import com.loska.session.UserSession;
+import com.loska.model.User;
+import com.loska.util.InvoiceFormBackingBean;
+import com.loska.util.InvoiceFormConverter;
+import com.loska.util.UserSession;
 
 @Controller
 @RequestMapping(value="/newInvoice")
@@ -33,11 +36,11 @@ public class NewInvoiceController {
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView getNewInvoiceForm(ModelMap model){
-		return new ModelAndView("newInvoice", "invoice", new Invoice());
+		return new ModelAndView("newInvoice", "invoiceForm", new InvoiceFormBackingBean());
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public String createNewInvoice(@Valid @ModelAttribute Invoice invoice, BindingResult result,
+	public String createNewInvoice(@Valid @ModelAttribute InvoiceFormBackingBean form, BindingResult result,
 			ModelMap model) {
 		if (result.hasErrors()) {
 			return "newInvoice";
@@ -46,9 +49,19 @@ public class NewInvoiceController {
 			//set date
 			java.util.Calendar cal = java.util.Calendar.getInstance(); 
 			java.sql.Date date = new Date(cal.getTimeInMillis());
-			invoice.setDate(date);
-			invoice.setUser(userDAO.findByUserId(userSession.getUserId()));
+			form.setDate(date);
+			
+			//setUserInfo
+			
+			//setBuyerInfo
+//			form.setB
+			
 //			invoice.setDescription(model.)
+			int userId = userSession.getUserId();
+			User user = userDAO.findByUserId(userId);
+			
+			InvoiceFormConverter converter = new InvoiceFormConverter();
+			Invoice invoice = converter.convertFormToInvoice(form, user);
 			invoiceDAO.insert(invoice);
 		}
 		return "redirect:index";

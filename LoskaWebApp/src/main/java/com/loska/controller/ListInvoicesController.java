@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.loska.dao.InvoiceDAO;
-import com.loska.session.UserSession;
+import com.loska.util.UserSession;
 
 @Controller
 @RequestMapping(value="/invoices")

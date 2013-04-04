@@ -10,7 +10,7 @@
 <body>
 	<jsp:include page="header.jsp" />
 	<h2>Luo Uusi Lasku</h2>
-	<form:form method="POST" action="newInvoice" modelAttribute="invoice">
+	<form:form method="POST" action="newInvoice" modelAttribute="invoiceForm">
 		<!-- 		<table> -->
 		<!-- 			<tr> -->
 		<%-- 				<td><form:label path="reference">Viite: </form:label></td> --%>
@@ -33,9 +33,11 @@
 		<!-- 						value="Peruuta" /></a></td> -->
 		<!-- 			</tr> -->
 		<!-- 		</table> -->
-		<form:label path="reference">Viite: </form:label><form:input path="reference" />
-		<form:errors path="reference" />
-		<br>
+		
+		
+<%-- 		<form:label path="reference">Viite: </form:label><form:input path="reference" /> --%>
+<%-- 		<form:errors path="reference" /> --%>
+<!-- 		<br> -->
 
 		<form:label path="totalsum">Summa:</form:label><form:input path="totalsum" />
 		<form:errors path="totalsum" />
@@ -44,6 +46,16 @@
 
 		<form:label path="description">Kuvaus:</form:label><form:textarea path="description" />
 		<form:errors path="description" />
+		<br>
+		
+				<form:label path="buyerAddress">Street address:</form:label><form:input path="buyerAddress" />
+		<form:errors path="buyerAddress" />
+		<br>
+				<form:label path="buyerPostcode">Postcode:</form:label><form:input path="buyerPostcode" />
+		<form:errors path="buyerPostcode" />
+		<br>
+				<form:label path="buyerCity">City:</form:label><form:input path="buyerCity" />
+		<form:errors path="buyerCity" />
 		<br>
 
 		<input type="submit" value="Luo lasku" /><a href='<c:url value="/index"/>'><input type="button"
