@@ -123,15 +123,18 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 			}
 			
 			//Insert rows
-			String insertRows ="";
+//			This is not efficient look into IT!!!!!!
 			for (InvoiceRow row:invoice.getRows()) {
-				insertRows = insertRows.concat("INSERT INTO invoice_rows (invoice_id, product_name, ammount, price, " +
-						"tax_percent) VALUES (" + invoice_id + ", \"" + 
+				String insertRows = ("INSERT INTO invoice_rows (invoice_id, product_name, ammount, price, tax_percent) VALUES (" + invoice_id + ", \"" + 
 						row.getName()+"\", "+row.getAmmount()+","+row.getPrice()+
 						", "+row.getTax()+");");
+				ps = conn.prepareStatement(insertRows);
+				System.out.println(insertRows);
+				ps.executeUpdate();
 			}
-			ps = conn.prepareStatement(insertRows);
-			ps.executeUpdate();
+
+			
+
 			
 			ps.close();
 		} catch (SQLException e) {

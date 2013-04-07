@@ -9,14 +9,21 @@
 
 <!-- TEST START -->
 <!--  <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" /> -->
-<!--   <script src="http://code.jquery.com/jquery-1.8.3.js"></script> -->
-<!--   <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script> -->
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<script src="js/jquery.dynamiclist.js"></script>
+<!-- <script> -->
+<!-- // 	$(function() { -->
+<!-- // 		$("#datepicker").datepicker(); -->
+<!-- // 	}); -->
+<!-- </script> -->
+<!-- TESTEND -->
+
 <script>
-	$(function() {
-		$("#datepicker").datepicker();
+	$(document).ready(function() {
+		$("#list").dynamiclist();
 	});
 </script>
-<!-- TESTEND -->
 
 </head>
 <body>
@@ -89,15 +96,17 @@
 
 		<!-- 		Products -->
 		<div id="products">
-			<table>
-				<tr>
-					<th>Nimi</th>
-					<th>Kpl</th>
-					<th>Hinta</th>
-					<th>ALV</th>
-					<th>Yht</th>
-				</tr>
+<!-- 						<table> -->
+			<tr>
+				<th>Nimi</th>
+				<th>Kpl</th>
+				<th>Hinta</th>
+				<th>ALV</th>
+				<th>Yht</th>
+			</tr>
+			<div id="list">
 				<c:forEach items="${invoiceForm.rows}" var="row" varStatus="status">
+					<div class="list-item">
 					<tr>
 						<td><input name="rows[${status.index}].name"
 							value="${row.name}" /></td>
@@ -107,10 +116,14 @@
 							value="${row.price}" /></td>
 						<td><input name="rows[${status.index}].tax"
 							value="${row.tax}" /></td>
+						<td><a href="#" class="list-remove">Poista</a></td>
 					</tr>
-				</c:forEach>
-			</table>
+			</div>
+			</c:forEach>
+			<a href="#" class="list-add">Add</a>
+<!-- 								</table> -->
 		</div>
+
 
 
 		<!-- 		TEST START -->
