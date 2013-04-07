@@ -27,6 +27,16 @@ public class InvoiceFormConverter {
 		ship_to.setCountry(form.getShip_to_country());
 		invoice.setShip_to(ship_to);
 		
+		//Set bill to
+		Address bill_to = new Address();
+		bill_to.setName(form.getBill_to_name());
+		bill_to.setName2(form.getBill_to_name2());
+		bill_to.setAddress(form.getBill_to_address());
+		bill_to.setPostcode(form.getBill_to_postcode());
+		bill_to.setCity(form.getBill_to_city());
+		bill_to.setCountry(form.getBill_to_country());
+		invoice.setBill_to(bill_to);
+		
 		invoice.setUser(user);
 		return invoice;
 	}

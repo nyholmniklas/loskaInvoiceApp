@@ -76,19 +76,27 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 	@Transactional
 	public void insert(Invoice invoice) {
 		String setAddressInfo = "INSERT INTO address_info " +
-				"(ship_to_name, ship_to_name2, ship_to_address, ship_to_postcode," +
-				"ship_to_city, ship_to_country) VALUES (?,?,?,?,?,?)";
+				"(bill_to_name, bill_to_name2, bill_to_address, bill_to_postcode," +
+				"bill_to_city, bill_to_country, " +
+				"ship_to_name, ship_to_name2, ship_to_address, ship_to_postcode," +
+				"ship_to_city, ship_to_country) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 		Connection conn = null;
 		try {
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(setAddressInfo,
 					Statement.RETURN_GENERATED_KEYS);
-			ps.setString(1, invoice.getShip_to().getName());
-			ps.setString(2, invoice.getShip_to().getName2());
-			ps.setString(3, invoice.getShip_to().getAddress());
-			ps.setString(4, invoice.getShip_to().getPostcode());
-			ps.setString(5, invoice.getShip_to().getCity());
-			ps.setString(6, invoice.getShip_to().getCountry());
+			ps.setString(1, invoice.getBill_to().getName());
+			ps.setString(2, invoice.getBill_to().getName2());
+			ps.setString(3, invoice.getBill_to().getAddress());
+			ps.setString(4, invoice.getBill_to().getPostcode());
+			ps.setString(5, invoice.getBill_to().getCity());
+			ps.setString(6, invoice.getBill_to().getCountry());
+			ps.setString(7, invoice.getShip_to().getName());
+			ps.setString(8, invoice.getShip_to().getName2());
+			ps.setString(9, invoice.getShip_to().getAddress());
+			ps.setString(10, invoice.getShip_to().getPostcode());
+			ps.setString(11, invoice.getShip_to().getCity());
+			ps.setString(12, invoice.getShip_to().getCountry());
 			
 			ps.executeUpdate();
 			ResultSet rs = ps.getGeneratedKeys();
@@ -98,9 +106,10 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 			}
 			
 			String insertInvoice = "INSERT INTO invoices " +
-					"(address_info_id) VALUES (?)";
+					"(user_id, address_info_id) VALUES (?,?)";
 			ps = conn.prepareStatement(insertInvoice);
-			ps.setInt(1, address_info_id);
+			ps.setInt(1, userDAO.findByUsername(invoice.getUser().getUsername()).getUser_Id());
+			ps.setInt(2, address_info_id);
 			ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
