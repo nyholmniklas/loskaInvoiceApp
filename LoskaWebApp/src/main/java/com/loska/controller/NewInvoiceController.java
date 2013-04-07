@@ -48,10 +48,10 @@ public class NewInvoiceController {
 		InvoiceFormBackingBean form = new InvoiceFormBackingBean();
 		
 		InvoiceRow row = new InvoiceRow();
-		row.setName("Nimi");
-		row.setAmmount(1);
-		row.setPrice(15f);
-		row.setTax(24f);
+//		row.setName("Nimi");
+//		row.setAmmount(1);
+//		row.setPrice(15f);
+//		row.setTax(24f);
 		form.getRows().add(row);
 		
 		return new ModelAndView("newInvoice", "invoiceForm", form);
