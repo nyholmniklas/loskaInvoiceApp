@@ -6,59 +6,61 @@
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/skeleton.css">
 <link rel="stylesheet" href="css/layout.css">
+
+<!-- TEST START -->
+<!--  <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" /> -->
+<!--   <script src="http://code.jquery.com/jquery-1.8.3.js"></script> -->
+<!--   <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script> -->
+<script>
+	$(function() {
+		$("#datepicker").datepicker();
+	});
+</script>
+<!-- TESTEND -->
+
 </head>
 <body>
 	<jsp:include page="header.jsp" />
+
 	<h2>Luo Uusi Lasku</h2>
-	<form:form method="POST" action="newInvoice" modelAttribute="invoiceForm">
-		<!-- 		<table> -->
-		<!-- 			<tr> -->
-		<%-- 				<td><form:label path="reference">Viite: </form:label></td> --%>
-		<%-- 				<td><form:input path="reference" /></td> --%>
-		<%-- 				<td><form:errors path="reference" /></td> --%>
-		<!-- 			</tr> -->
-		<!-- 			<tr> -->
-		<%-- 				<td><form:label path="totalsum">Summa:</form:label></td> --%>
-		<%-- 				<td><form:input path="totalsum" /></td> --%>
-		<%-- 				<td><form:errors path="totalsum" /></td> --%>
-		<!-- 			</tr> -->
-		<!-- 						<tr> -->
-		<%-- 				<td><form:label path="description">Kuvaus:</form:label></td> --%>
-		<%-- 				<td><form:textarea path="description" /></td> --%>
-		<%-- 				<td><form:errors path="description" /></td> --%>
-		<!-- 			</tr> -->
-		<!-- 			<tr> -->
-		<!-- 				<td><input type="submit" value="Luo lasku" /></td> -->
-		<%-- 				<td><a href='<c:url value="/index"/>'><input type="button" --%>
-		<!-- 						value="Peruuta" /></a></td> -->
-		<!-- 			</tr> -->
-		<!-- 		</table> -->
-		
-		
-<%-- 		<form:label path="reference">Viite: </form:label><form:input path="reference" /> --%>
-<%-- 		<form:errors path="reference" /> --%>
-<!-- 		<br> -->
 
-		<form:label path="totalsum">Summa:</form:label><form:input path="totalsum" />
-		<form:errors path="totalsum" />
-		<br>
+	<form:form method="POST" action="newInvoice"
+		modelAttribute="invoiceForm">
+		<div id="bill_to">
+			<form:label path="ship_to_name">Nimi:</form:label>
+			<form:input path="ship_to_name" />
+			<form:errors path="ship_to_name" />
+			
+			<form:label path="ship_to_name2">Nimi2:</form:label>
+			<form:input path="ship_to_name2" />
+			<form:errors path="ship_to_name2" />
+			
+			<form:label path="ship_to_address">Katuosoite:</form:label>
+			<form:input path="ship_to_address" />
+			<form:errors path="ship_to_address" />
+			
+			<form:label path="ship_to_postcode">Postiosoite:</form:label>
+			<form:input path="ship_to_postcode" />
+			<form:errors path="ship_to_postcode" />
+			
+			<form:label path="ship_to_city">Kaupunki:</form:label>
+			<form:input path="ship_to_city" />
+			<form:errors path="ship_to_city" />
+			
+			<form:label path="ship_to_country">Maa:</form:label>
+			<form:input path="ship_to_country" />
+			<form:errors path="ship_to_country" />
+			<br>
+		</div>
 
 
-		<form:label path="description">Kuvaus:</form:label><form:textarea path="description" />
-		<form:errors path="description" />
-		<br>
-		
-				<form:label path="buyerAddress">Street address:</form:label><form:input path="buyerAddress" />
-		<form:errors path="buyerAddress" />
-		<br>
-				<form:label path="buyerPostcode">Postcode:</form:label><form:input path="buyerPostcode" />
-		<form:errors path="buyerPostcode" />
-		<br>
-				<form:label path="buyerCity">City:</form:label><form:input path="buyerCity" />
-		<form:errors path="buyerCity" />
-		<br>
 
-		<input type="submit" value="Luo lasku" /><a href='<c:url value="/index"/>'><input type="button"
+		<!-- 		TEST START -->
+		<!-- <input type="text" id="datepicker" /> -->
+		<!-- TESTEND -->
+
+		<input type="submit" value="Luo lasku" />
+		<a href='<c:url value="/index"/>'><input type="button"
 			value="Peruuta" /></a>
 
 	</form:form>

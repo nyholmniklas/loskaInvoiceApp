@@ -15,71 +15,105 @@ public class InvoiceFormBackingBean {
 	private int invoiceId;
 
 //	private Integer reference;
-	private Date date;
-	private String description;
-	@NotNull
-	private Float totalsum;
+//	private Date date;
+//	private String description;
 	
-	//Buyer
-	private Integer buyerId;
-	private String buyerAddress;
-	private String buyerPostcode;
-	private String buyerCity;
-
+	//Ship to
+	private String ship_to_name;
+	private String ship_to_name2;
+	private String ship_to_address;
+	private String ship_to_postcode;
+	private String ship_to_city;
+	private String ship_to_country;
+	
+	//Bill to
+	private String bill_to_name;
+	private String bill_to_name2;
+	private String bill_to_address;
+	private String bill_to_postcode;
+	private String bill_to_city;
+	private String bill_to_country;
+	
+	//Getters and setters
 	public int getInvoiceId() {
 		return invoiceId;
 	}
 	public void setInvoiceId(int invoiceId) {
 		this.invoiceId = invoiceId;
 	}
-	public Integer getBuyerId() {
-		return buyerId;
+	public String getShip_to_name() {
+		return ship_to_name;
 	}
-	public void setBuyerId(Integer buyerId) {
-		this.buyerId = buyerId;
+	public void setShip_to_name(String ship_to_name) {
+		this.ship_to_name = ship_to_name;
 	}
-//	public Integer getReference() {
-//		return reference;
-//	}
-//	public void setReference(Integer reference) {
-//		this.reference = reference;
-//	}
-	public Date getDate() {
-		return date;
+	public String getShip_to_name2() {
+		return ship_to_name2;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setShip_to_name2(String ship_to_name2) {
+		this.ship_to_name2 = ship_to_name2;
 	}
-	public String getDescription() {
-		return description;
+	public String getShip_to_address() {
+		return ship_to_address;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setShip_to_address(String ship_to_address) {
+		this.ship_to_address = ship_to_address;
 	}
-	public Float getTotalsum() {
-		return totalsum;
+	public String getShip_to_postcode() {
+		return ship_to_postcode;
 	}
-	public void setTotalsum(Float totalsum) {
-		this.totalsum = totalsum;
+	public void setShip_to_postcode(String ship_to_postcode) {
+		this.ship_to_postcode = ship_to_postcode;
 	}
-	public String getBuyerAddress() {
-		return buyerAddress;
+	public String getShip_to_city() {
+		return ship_to_city;
 	}
-	public void setBuyerAddress(String buyerAddress) {
-		this.buyerAddress = buyerAddress;
+	public void setShip_to_city(String ship_to_city) {
+		this.ship_to_city = ship_to_city;
 	}
-	public String getBuyerPostcode() {
-		return buyerPostcode;
+	public String getShip_to_country() {
+		return ship_to_country;
 	}
-	public void setBuyerPostcode(String buyerPostcode) {
-		this.buyerPostcode = buyerPostcode;
+	public void setShip_to_country(String ship_to_country) {
+		this.ship_to_country = ship_to_country;
 	}
-	public String getBuyerCity() {
-		return buyerCity;
+	public String getBill_to_name() {
+		return bill_to_name;
 	}
-	public void setBuyerCity(String buyerCity) {
-		this.buyerCity = buyerCity;
+	public void setBill_to_name(String bill_to_name) {
+		this.bill_to_name = bill_to_name;
 	}
+	public String getBill_to_name2() {
+		return bill_to_name2;
+	}
+	public void setBill_to_name2(String bill_to_name2) {
+		this.bill_to_name2 = bill_to_name2;
+	}
+	public String getBill_to_address() {
+		return bill_to_address;
+	}
+	public void setBill_to_address(String bill_to_address) {
+		this.bill_to_address = bill_to_address;
+	}
+	public String getBill_to_postcode() {
+		return bill_to_postcode;
+	}
+	public void setBill_to_postcode(String bill_to_postcode) {
+		this.bill_to_postcode = bill_to_postcode;
+	}
+	public String getBill_to_city() {
+		return bill_to_city;
+	}
+	public void setBill_to_city(String bill_to_city) {
+		this.bill_to_city = bill_to_city;
+	}
+	public String getBill_to_country() {
+		return bill_to_country;
+	}
+	public void setBill_to_country(String bill_to_country) {
+		this.bill_to_country = bill_to_country;
+	}
+	
 	
 	
 }

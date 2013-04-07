@@ -47,19 +47,13 @@ public class NewInvoiceController {
 		}
 		else  {
 			//set date
-			java.util.Calendar cal = java.util.Calendar.getInstance(); 
-			java.sql.Date date = new Date(cal.getTimeInMillis());
-			form.setDate(date);
+//			java.util.Calendar cal = java.util.Calendar.getInstance(); 
+//			java.sql.Date date = new Date(cal.getTimeInMillis());
+//			form.setDate(date);
 			
-			//setUserInfo
-			
-			//setBuyerInfo
-//			form.setB
-			
-//			invoice.setDescription(model.)
+			//Get user from session
 			int userId = userSession.getUserId();
 			User user = userDAO.findByUserId(userId);
-			System.out.println("User id " + userId);
 			
 			InvoiceFormConverter converter = new InvoiceFormConverter();
 			Invoice invoice = converter.convertFormToInvoice(form, user);

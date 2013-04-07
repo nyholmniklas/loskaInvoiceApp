@@ -11,6 +11,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.loska.dao.InvoiceDAO;
 import com.loska.dao.UserDAO;
@@ -50,7 +51,6 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 				i.setInvoice_id(rs.getInt("invoice_id"));
 				i.setReference(rs.getInt("reference"));
 				//TEMP next line
-				i.setBuyer(null);
 				i.setDate(rs.getDate("date"));
 				i.setDescription(rs.getString("description"));
 				i.setUser(userDAO.findByUserId(rs.getInt("user_id")));
@@ -73,31 +73,35 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 	}
 
 	@Override
+	@Transactional
 	public void insert(Invoice invoice) {
-		String sql = "INSERT INTO invoices (user_id, reference, date, " +
-				"buyer_id, description, totalsum, buyer_address, buyer_postcode," +
-				"buyer_city) VALUES (?,?,?,50,?,?,?,?,?)";
+		String setAddressInfo = "INSERT INTO address_info " +
+				"(ship_to_name, ship_to_name2, ship_to_address, ship_to_postcode," +
+				"ship_to_city, ship_to_country) VALUES (?,?,?,?,?,?)";
 		Connection conn = null;
 		try {
 			conn = dataSource.getConnection();
-			PreparedStatement ps = conn.prepareStatement(sql,
+			PreparedStatement ps = conn.prepareStatement(setAddressInfo,
 					Statement.RETURN_GENERATED_KEYS);
-			ps.setInt(1, invoice.getUser().getUser_Id());
-			ps.setInt(2, 0);
-			ps.setDate(3, invoice.getDate());
-			ps.setInt(4, invoice.getBuyer().getBuyerId());
-			ps.setString(4, invoice.getDescription());
-			ps.setFloat(5, invoice.getTotalsum());
-			ps.setString(6, invoice.getBuyer().getAddress());
-			ps.setString(7, invoice.getBuyer().getPostcode());
-			ps.setString(8, invoice.getBuyer().getCity());
+			ps.setString(1, invoice.getShip_to().getName());
+			ps.setString(2, invoice.getShip_to().getName2());
+			ps.setString(3, invoice.getShip_to().getAddress());
+			ps.setString(4, invoice.getShip_to().getPostcode());
+			ps.setString(5, invoice.getShip_to().getCity());
+			ps.setString(6, invoice.getShip_to().getCountry());
+			
 			ps.executeUpdate();
-//			ResultSet rs = ps.getGeneratedKeys();
-//			int id = 0;
-//			if (rs.next()) {
-//				id = rs.getInt(1);
-//			}
-//			insertUserRole(conn, user);
+			ResultSet rs = ps.getGeneratedKeys();
+			int address_info_id = 0;
+			if (rs.next()) {
+				address_info_id = rs.getInt(1);
+			}
+			
+			String insertInvoice = "INSERT INTO invoices " +
+					"(address_info_id) VALUES (?)";
+			ps = conn.prepareStatement(insertInvoice);
+			ps.setInt(1, address_info_id);
+			ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

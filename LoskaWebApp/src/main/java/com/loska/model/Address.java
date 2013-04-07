@@ -1,15 +1,23 @@
 package com.loska.model;
 
-public class Buyer {
-	private int buyerId;
+public class Address {
+	private String name;
+	private String name2;
 	private String address;
 	private String postcode;
 	private String city;
-	public int getBuyerId() {
-		return buyerId;
+	private String country;
+	public String getName() {
+		return name;
 	}
-	public void setBuyerId(int buyerId) {
-		this.buyerId = buyerId;
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getName2() {
+		return name2;
+	}
+	public void setName2(String name2) {
+		this.name2 = name2;
 	}
 	public String getAddress() {
 		return address;
@@ -29,7 +37,12 @@ public class Buyer {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
 	
 	
 }
