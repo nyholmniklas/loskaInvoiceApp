@@ -1,12 +1,16 @@
 package com.loska.util;
 
 import java.sql.Date;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
+import org.springframework.util.AutoPopulatingList;
 import org.springframework.context.annotation.Scope;
 
+import com.loska.model.InvoiceRow;
 import com.loska.model.User;
 
 @Component
@@ -33,6 +37,9 @@ public class InvoiceFormBackingBean {
 	private String bill_to_postcode;
 	private String bill_to_city;
 	private String bill_to_country;
+	
+	//Product rows
+	private AutoPopulatingList<InvoiceRow> rows = new AutoPopulatingList<InvoiceRow>(InvoiceRow.class);
 	
 	//Getters and setters
 	public int getInvoiceId() {
@@ -113,7 +120,22 @@ public class InvoiceFormBackingBean {
 	public void setBill_to_country(String bill_to_country) {
 		this.bill_to_country = bill_to_country;
 	}
-	
+	public AutoPopulatingList<InvoiceRow> getRows() {
+		return rows;
+	}
+	public void setRows(AutoPopulatingList<InvoiceRow> rows) {
+		this.rows = rows;
+	}
+
+    public void shrinkRows() {
+        synchronized(rows) {
+            for (Iterator i = this.rows.iterator(); i.hasNext();) {
+                if (i.next() == null) {
+                    i.remove();
+                }
+            }
+        }
+    }
 	
 	
 }

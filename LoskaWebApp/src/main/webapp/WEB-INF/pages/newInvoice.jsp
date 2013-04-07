@@ -27,6 +27,8 @@
 	<form:form method="POST" action="newInvoice"
 		modelAttribute="invoiceForm">
 		<div id="address_info">
+
+			<!-- 		Bill to -->
 			<div id="bill_to">
 				<b>Laskutusosoite: </b><br />
 				<form:label path="bill_to_name">Nimi:</form:label>
@@ -54,6 +56,7 @@
 				<form:errors path="bill_to_country" />
 			</div>
 
+			<!-- 		Ship to -->
 			<div id="ship_to">
 				<b>Toimitusosoite: </b><br />
 				<form:label path="ship_to_name">Nimi:</form:label>
@@ -82,6 +85,31 @@
 				<form:errors path="ship_to_country" />
 				<br>
 			</div>
+		</div>
+
+		<!-- 		Products -->
+		<div id="products">
+			<table>
+				<tr>
+					<th>Nimi</th>
+					<th>Kpl</th>
+					<th>Hinta</th>
+					<th>ALV</th>
+					<th>Yht</th>
+				</tr>
+				<c:forEach items="${invoiceForm.rows}" var="row" varStatus="status">
+					<tr>
+						<td><input name="rows[${status.index}].name"
+							value="${row.name}" /></td>
+						<td><input name="rows[${status.index}].ammount"
+							value="${row.ammount}" /></td>
+						<td><input name="rows[${status.index}].price"
+							value="${row.price}" /></td>
+						<td><input name="rows[${status.index}].tax"
+							value="${row.tax}" /></td>
+					</tr>
+				</c:forEach>
+			</table>
 		</div>
 
 

@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.loska.dao.InvoiceDAO;
 import com.loska.dao.UserDAO;
 import com.loska.model.Invoice;
+import com.loska.model.InvoiceRow;
 
 public class JdbcInvoiceDAO implements InvoiceDAO {
 
@@ -35,6 +36,7 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 	}
 
 	@Override
+	//Currently not working
 	public List<Invoice> getAllInvoicesBelongingToUserId(int user_Id) {
 		ArrayList<Invoice> invoices = new ArrayList<Invoice>();
 		String sql = "SELECT invoice_id, user_id, reference, date, buyer_id, description, totalsum " +
@@ -48,13 +50,13 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 
 			while (rs.next()) {
 				Invoice i = new Invoice();
-				i.setInvoice_id(rs.getInt("invoice_id"));
-				i.setReference(rs.getInt("reference"));
-				//TEMP next line
-				i.setDate(rs.getDate("date"));
-				i.setDescription(rs.getString("description"));
-				i.setUser(userDAO.findByUserId(rs.getInt("user_id")));
-				i.setTotalsum(rs.getFloat("totalsum"));
+//				i.setInvoice_id(rs.getInt("invoice_id"));
+//				i.setReference(rs.getInt("reference"));
+//				//TEMP next line
+//				i.setDate(rs.getDate("date"));
+//				i.setDescription(rs.getString("description"));
+//				i.setUser(userDAO.findByUserId(rs.getInt("user_id")));
+//				i.setTotalsum(rs.getFloat("totalsum"));
 				invoices.add(i);
 			}
 			ps.close();
@@ -75,14 +77,17 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 	@Override
 	@Transactional
 	public void insert(Invoice invoice) {
-		String setAddressInfo = "INSERT INTO address_info " +
-				"(bill_to_name, bill_to_name2, bill_to_address, bill_to_postcode," +
-				"bill_to_city, bill_to_country, " +
-				"ship_to_name, ship_to_name2, ship_to_address, ship_to_postcode," +
-				"ship_to_city, ship_to_country) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+
 		Connection conn = null;
 		try {
 			conn = dataSource.getConnection();
+			
+			//Insert address_info
+			String setAddressInfo = "INSERT INTO address_info " +
+					"(bill_to_name, bill_to_name2, bill_to_address, bill_to_postcode," +
+					"bill_to_city, bill_to_country, " +
+					"ship_to_name, ship_to_name2, ship_to_address, ship_to_postcode," +
+					"ship_to_city, ship_to_country) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement ps = conn.prepareStatement(setAddressInfo,
 					Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, invoice.getBill_to().getName());
@@ -97,7 +102,6 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 			ps.setString(10, invoice.getShip_to().getPostcode());
 			ps.setString(11, invoice.getShip_to().getCity());
 			ps.setString(12, invoice.getShip_to().getCountry());
-			
 			ps.executeUpdate();
 			ResultSet rs = ps.getGeneratedKeys();
 			int address_info_id = 0;
@@ -105,12 +109,30 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 				address_info_id = rs.getInt(1);
 			}
 			
+			//Insert invoice
 			String insertInvoice = "INSERT INTO invoices " +
 					"(user_id, address_info_id) VALUES (?,?)";
-			ps = conn.prepareStatement(insertInvoice);
+			ps = conn.prepareStatement(insertInvoice, Statement.RETURN_GENERATED_KEYS);
 			ps.setInt(1, userDAO.findByUsername(invoice.getUser().getUsername()).getUser_Id());
 			ps.setInt(2, address_info_id);
 			ps.executeUpdate();
+			rs = ps.getGeneratedKeys();
+			int invoice_id = 0;
+			if (rs.next()) {
+				invoice_id = rs.getInt(1);
+			}
+			
+			//Insert rows
+			String insertRows ="";
+			for (InvoiceRow row:invoice.getRows()) {
+				insertRows = insertRows.concat("INSERT INTO invoice_rows (invoice_id, product_name, ammount, price, " +
+						"tax_percent) VALUES (" + invoice_id + ", \"" + 
+						row.getName()+"\", "+row.getAmmount()+","+row.getPrice()+
+						", "+row.getTax()+");");
+			}
+			ps = conn.prepareStatement(insertRows);
+			ps.executeUpdate();
+			
 			ps.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

@@ -1,6 +1,8 @@
 package com.loska.model;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
@@ -22,6 +24,7 @@ public class Invoice {
 		private float totalsum;
 		private String bank_account;
 		private String company_name;
+		private List<InvoiceRow> rows;
 		
 		public int getInvoice_id() {
 			return invoice_id;
@@ -107,6 +110,13 @@ public class Invoice {
 		public void setUser(User user) {
 			this.user = user;
 		}
+		public List<InvoiceRow> getRows() {
+			return rows;
+		}
+		public void setRows(List<InvoiceRow> rows) {
+			this.rows = rows;
+		}
+
 		
 		
 }
