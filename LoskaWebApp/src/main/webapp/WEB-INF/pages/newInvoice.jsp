@@ -4,8 +4,7 @@
 <head>
 <title>Luo Uusi Lasku</title>
 <link rel="stylesheet" href="css/base.css">
-<!-- <link rel="stylesheet" href="css/skeleton.css"> -->
-<!-- <link rel="stylesheet" href="css/layout.css"> -->
+<link rel="stylesheet" href="css/new_invoice.css">
 
 <!-- TEST START -->
 <!--  <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" /> -->
@@ -13,8 +12,8 @@
 <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 <script src="js/jquery.dynamiclist.js"></script>
 <!-- <script> -->
-<!-- // 	$(function() { -->
-<!-- // 		$("#datepicker").datepicker(); -->
+<!-- //  	$(function() { -->
+<!-- //  		$("#datepicker").datepicker(); -->
 <!-- // 	}); -->
 <!-- </script> -->
 <!-- TESTEND -->
@@ -148,9 +147,10 @@
 
 
 
-			<!-- 		TEST START -->
-			<!-- <input type="text" id="datepicker" /> -->
-			<!-- TESTEND -->
+<!-- 					TEST START -->
+<%-- <form:label path="date"><b>Pvm:</b></form:label> --%>
+<%-- 			<form:input path="date" id="datepicker" /> --%>
+<!-- 			TESTEND -->
 
 			<input type="submit" value="Luo lasku" /> <a
 				href='<c:url value="/index"/>'><input type="button"

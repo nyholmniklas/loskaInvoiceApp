@@ -10,27 +10,8 @@
 	font-style: normal;
 }
 
-body {
-	font-family: 'credit_valleyregular';
-}
+/* body { */
+/* 	font-family: 'credit_valleyregular'; */
+/* } */
 
-div#address_info {
-	position: "absolute";
-	right:100px;
-	height: 200px;
-	overflow:hidden;
-}
 
-div#bill_to {
-	position: "relative";
-	float:left;
-	width: 40%;
-		height: 200px;
-}
-
-div#ship_to {
-	position: "relative";
-	float:left;
-	width: 40%;
-			height: 200px;
-}

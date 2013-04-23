@@ -1,6 +1,7 @@
 package com.loska.util;
 
-import java.sql.Date;
+
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class InvoiceFormBackingBean {
 	private int invoiceId;
 
 //	private Integer reference;
-//	private Date date;
+	private Date date;
 //	private String description;
 	
 	//Ship to
@@ -126,8 +127,14 @@ public class InvoiceFormBackingBean {
 	public void setRows(AutoPopulatingList<InvoiceRow> rows) {
 		this.rows = rows;
 	}
-
-    public void shrinkRows() {
+	
+    public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	public void shrinkRows() {
         synchronized(rows) {
             for (Iterator i = this.rows.iterator(); i.hasNext();) {
                 if (i.next() == null) {
