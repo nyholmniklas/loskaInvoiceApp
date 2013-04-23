@@ -1,6 +1,7 @@
 package com.loska.dao.impl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -46,11 +47,13 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 			//Get and set the user
 			User user = userDAO.findByUserId(rs.getInt("user_id"));
 			invoice.setUser(user);
+			invoice.setInvoice_id(rs.getInt("invoice_id"));
 			
 			//Get and set all "invoice rows"
 			invoice.setRows(getAllRowsForInvoiceByInvoiceId(id));
 			
 			//TODO Fetch all other invoice info(dates, etc)
+			invoice.setDate(rs.getDate("date"));
 
 			//Get and set adress info for invoice
 			Address bill = new Address();
@@ -60,14 +63,14 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			rs.next();
-			bill.setName("bill_to_name");
-			bill.setName2("bill_to_name2");
+			bill.setName(rs.getString("bill_to_name"));
+			bill.setName2(rs.getString("bill_to_name2"));
 			bill.setAddress(rs.getString("bill_to_address"));
 			bill.setPostcode(rs.getString("bill_to_postcode"));
 			bill.setCity(rs.getString("bill_to_city"));
 			bill.setCountry(rs.getString("bill_to_country"));
-			ship.setName("ship_to_name");
-			ship.setName2("ship_to_name2");
+			ship.setName(rs.getString("ship_to_name"));
+			ship.setName2(rs.getString("ship_to_name2"));
 			ship.setAddress(rs.getString("ship_to_address"));
 			ship.setPostcode(rs.getString("ship_to_postcode"));
 			ship.setCity(rs.getString("ship_to_city"));
@@ -78,6 +81,15 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
+		 finally {
+				if (conn != null) {
+					try {
+						conn.close();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+		 }
 		return invoice;
 	}
 
@@ -150,13 +162,16 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 
 			// Insert invoice
 			String insertInvoice = "INSERT INTO invoices "
-					+ "(user_id, address_info_id) VALUES (?,?)";
+					+ "(user_id, address_info_id, date) VALUES (?,?,?)";
 			ps = conn.prepareStatement(insertInvoice,
 					Statement.RETURN_GENERATED_KEYS);
 			ps.setInt(1, userDAO
 					.findByUsername(invoice.getUser().getUsername())
 					.getUser_Id());
 			ps.setInt(2, address_info_id);
+			ps.setDate(3, invoice.getDate());
+			//temp sout
+			System.out.println("insert invoice sql: "+ps.toString());
 			ps.executeUpdate();
 			rs = ps.getGeneratedKeys();
 			int invoice_id = 0;
@@ -218,6 +233,15 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		 finally {
+				if (conn != null) {
+					try {
+						conn.close();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+		 }
 		return row;
 	}
 
@@ -244,6 +268,15 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		 finally {
+				if (conn != null) {
+					try {
+						conn.close();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+		 }
 		return rows;
 	}
 }

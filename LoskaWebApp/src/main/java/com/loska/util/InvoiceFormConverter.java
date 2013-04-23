@@ -19,6 +19,9 @@ public class InvoiceFormConverter {
 	public Invoice convertFormToInvoice(InvoiceFormBackingBean form,
 			User user){
 		Invoice invoice = new Invoice();
+		
+		//Set date
+		invoice.setDate(form.getDate());
 
 		//Set ship to
 		Address ship_to = new Address();

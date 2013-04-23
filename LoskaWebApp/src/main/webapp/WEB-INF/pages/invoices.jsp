@@ -12,10 +12,10 @@
 	<table>
 		<c:forEach items="${invoices}" var="i">
 			<tr>
-				<td>${i.invoice_id }</td>
-				<td>${i.reference }</td>
-				<td>${i.date }</td>
-				<td>${i.description }</td>
+				<td>${i.invoice_id}</td>
+				<td>${i.bill_to.name2}</td>
+				<td>${i.date}</td>
+				<td>${i.description}</td>
 <%-- 				<td>${i.buyer_id }</td> --%>
 			</tr>
 			<!-- 			<br> -->

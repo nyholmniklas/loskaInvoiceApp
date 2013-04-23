@@ -7,27 +7,28 @@
 <link rel="stylesheet" href="css/new_invoice.css">
 
 <!-- TEST START -->
-<!--  <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" /> -->
+ <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
 <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
 <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 <script src="js/jquery.dynamiclist.js"></script>
-<!-- <script> -->
-<!-- //  	$(function() { -->
-<!-- //  		$("#datepicker").datepicker(); -->
-<!-- // 	}); -->
-<!-- </script> -->
-<!-- TESTEND -->
 <script>
-	$(function() {
-		$('input[name$="ammount"]').change(
-				function() {
-					var unitprice = $(this).siblings('input[name$="price"]')
-							.val();
-					$(this).siblings('input[name$="tax"]').val(
-							$(this).val() * unitprice);
-				});
+ 	$(function() {
+ 		$("#datepicker").datepicker({ dateFormat: 'yy-mm-dd' });
 	});
 </script>
+<!-- TESTEND -->
+
+<!-- <script> -->
+<!-- // 	$(function() { -->
+<!-- // 		$('input[name$="ammount"]').change( -->
+<!-- // 				function() { -->
+<!-- // 					var unitprice = $(this).siblings('input[name$="price"]') -->
+<!-- // 							.val(); -->
+<!-- // 					$(this).siblings('input[name$="tax"]').val( -->
+<!-- // 							$(this).val() * unitprice); -->
+<!-- // 				}); -->
+<!-- // 	}); -->
+<!-- </script> -->
 
 <script>
 	$(document).ready(function() {
@@ -148,8 +149,8 @@
 
 
 <!-- 					TEST START -->
-<%-- <form:label path="date"><b>Pvm:</b></form:label> --%>
-<%-- 			<form:input path="date" id="datepicker" /> --%>
+<form:label path="date"><b>Pvm:</b></form:label>
+			<form:input path="date" id="datepicker" />
 <!-- 			TESTEND -->
 
 			<input type="submit" value="Luo lasku" /> <a

@@ -25,11 +25,6 @@ public class ListInvoicesController {
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView getInvoices(ModelMap model, Principal principal) {
-//		//Security check
-//		if (principal.getName() != userDAO.findByUserId(userSession.getUserId()).getUsername())
-//			return new ModelAndView("index");
-//			
-			
 		model.addAttribute("invoices", invoiceDAO.getAllInvoicesBelongingToUserId(userSession.getUserId()));
 		return new ModelAndView("invoices", model);
 	}
