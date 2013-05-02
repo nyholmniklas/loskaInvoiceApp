@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -89,7 +90,7 @@ public class JdbcCustomerDAO implements CustomerDAO {
 	@Override
 	public Customer findCustomerById(int customerId) {
 		Customer customer = new Customer();
-		String sql = "SELECT * FROM customers WHERE customer_id ='?';";
+		String sql = "SELECT * FROM customers WHERE customer_id =?;";
 		Connection conn = null;
 		try {
 			conn = dataSource.getConnection();
@@ -140,8 +141,34 @@ public class JdbcCustomerDAO implements CustomerDAO {
 
 	@Override
 	public List<Customer> findAllCustomersForUserId(int userId) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Customer> customers = new ArrayList<Customer>();
+		String sql = "SELECT user_id, customer_id " + "FROM customers WHERE user_id=?";
+		Connection conn = null;
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, userId);
+			ResultSet rs = ps.executeQuery();
+
+			// Get the customers
+			while (rs.next()) {
+				customers.add(findCustomerById(rs.getInt("customer_id")));
+			}
+			ps.close();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		System.out.println("CUSTOMERS: "+customers);
+		return customers;
 	}
 
 }
