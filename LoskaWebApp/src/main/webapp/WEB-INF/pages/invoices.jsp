@@ -11,15 +11,19 @@
 	<h2>Laskut</h2>
 	<!-- 	<br> -->
 	<table>
+		<tr>
+			<th>Toimitusnimi</th>
+			<th>Laskutusnimi</th>
+			<th>Laskupvm</th>
+			<th>Eräpvm</th>
+		</tr>
 		<c:forEach items="${invoices}" var="i">
 			<tr>
-				<td>${i.invoice_id}</td>
-				<td>${i.bill_to.name2}</td>
+				<td>${i.ship_to.name}</td>
+				<td>${i.bill_to.name}</td>
 				<td>${i.date}</td>
-				<td>${i.description}</td>
-<%-- 				<td>${i.buyer_id }</td> --%>
+				<td>${i.due_date}</td>
 			</tr>
-			<!-- 			<br> -->
 		</c:forEach>
 	</table>
 	<br>

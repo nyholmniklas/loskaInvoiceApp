@@ -4,6 +4,7 @@ public class Customer {
 		private Integer customer_id;
 		private Integer user_id;
 		private String name;
+		private Integer address_info_id;
 		private Address bill_to;
 		private Address ship_to;
 		private String y_tunnus;
@@ -42,6 +43,12 @@ public class Customer {
 		}
 		public void setY_tunnus(String y_tunnus) {
 			this.y_tunnus = y_tunnus;
+		}
+		public Integer getAddress_info_id() {
+			return address_info_id;
+		}
+		public void setAddress_info_id(Integer address_info_id) {
+			this.address_info_id = address_info_id;
 		}
 		
 		

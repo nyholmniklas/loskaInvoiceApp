@@ -16,6 +16,7 @@ public class CustomerFormConverter {
 		customer.setY_tunnus(form.getY_tunnus());
 		
 		//Set ship to
+		
 		Address ship_to = new Address();
 		ship_to.setName(form.getShip_to_name());
 		ship_to.setName2(form.getShip_to_name2());

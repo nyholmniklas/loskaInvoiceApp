@@ -47,7 +47,7 @@ public class CustomerController {
 		Address bill_to = customer.getBill_to();
 		Address ship_to = customer.getShip_to();
 		
-		form.setCustomer_id(customer.getCustomer_id());
+		form.setCustomer_id(customer.getCustomer_id().toString());
 		
 		form.setBill_to_name(bill_to.getName());
 		form.setBill_to_name2(bill_to.getName2());
@@ -77,7 +77,7 @@ public class CustomerController {
 		User user = userDAO.findByUserId(userId);
 		CustomerFormConverter converter = new CustomerFormConverter();
 		Customer customer = converter.convertFormToCustomer(form, user);
-		customer.setCustomer_id(form.getCustomer_id());
+		customer.setCustomer_id(Integer.parseInt(form.getCustomer_id()));
 		customerDAO.updateCustomer(customer);
 		return "redirect:index";
 	}

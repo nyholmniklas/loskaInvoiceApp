@@ -102,6 +102,7 @@ public class JdbcCustomerDAO implements CustomerDAO {
 			customer.setName(rs.getString("name"));
 			customer.setCustomer_id(rs.getInt("customer_id"));
 			customer.setY_tunnus(rs.getString("y_tunnus"));
+			customer.setAddress_info_id(rs.getInt("address_info_id"));
 			// Get and set adress info for customer
 			Address bill = new Address();
 			Address ship = new Address();
@@ -180,8 +181,8 @@ public class JdbcCustomerDAO implements CustomerDAO {
 			String setAddressInfo = "UPDATE address_info "
 					+ "SET bill_to_name=?, bill_to_name2=?, bill_to_address=?, bill_to_postcode=?,"
 					+ "bill_to_city=?, bill_to_country=?, "
-					+ "ship_to_name=?, ship_to_name2=?, ship_to_address, ship_to_postcode=?,"
-					+ "ship_to_city=?, ship_to_country=? WHERE customer_id=?";
+					+ "ship_to_name=?, ship_to_name2=?, ship_to_address=?, ship_to_postcode=?,"
+					+ "ship_to_city=?, ship_to_country=? WHERE address_info_id=?";
 			PreparedStatement ps = conn.prepareStatement(setAddressInfo,
 					Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, customer.getBill_to().getName());
@@ -196,12 +197,12 @@ public class JdbcCustomerDAO implements CustomerDAO {
 			ps.setString(10, customer.getShip_to().getPostcode());
 			ps.setString(11, customer.getShip_to().getCity());
 			ps.setString(12, customer.getShip_to().getCountry());
-			ps.setInt(13, customer.getCustomer_id());
+			ps.setInt(13, findCustomerById(customer.getCustomer_id()).getAddress_info_id());
 			ps.executeUpdate();
 
 			// Update customer
 			String insertcustomer = "UPDATE customers "
-					+ "SET name=?, y_tunnus=? WHERE customerId=?";
+					+ "SET name=?, y_tunnus=? WHERE customer_id=?";
 			ps = conn.prepareStatement(insertcustomer);
 			ps.setString(1, customer.getName());
 			ps.setString(2, customer.getY_tunnus());
