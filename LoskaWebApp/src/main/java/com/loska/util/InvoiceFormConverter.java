@@ -22,6 +22,7 @@ public class InvoiceFormConverter {
 		
 		//Set date
 		invoice.setDate(form.getDate());
+		invoice.setDue_date(form.getDue_date());
 
 		//Set ship to
 		Address ship_to = new Address();

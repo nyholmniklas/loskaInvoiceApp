@@ -7,7 +7,11 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	
-		<bean id="invoiceDAO" class="com.loska.dao.impl.JdbcInvoiceDAO">
+	<bean id="invoiceDAO" class="com.loska.dao.impl.JdbcInvoiceDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+		<bean id="customerDAO" class="com.loska.dao.impl.JdbcCustomerDAO">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
  

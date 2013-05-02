@@ -13,11 +13,6 @@
                    http://www.springframework.org/schema/aop
          http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
 
-	<!-- DispatcherServletin (front-controllerin) konfiguraatio, jolla määritellään 
-		pyynnön kulku. -->
-
-	<!-- Sovelluksemme lähdekooditiedostot sijaitsevat pakkauksessa wad tai 
-		sen alipakkauksissa -->
 	<context:component-scan base-package="com.loska"
 		scoped-proxy="interfaces" />
 

@@ -54,6 +54,7 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 			
 			//TODO Fetch all other invoice info(dates, etc)
 			invoice.setDate(rs.getDate("date"));
+			invoice.setDue_date(rs.getDate("due_date"));
 
 			//Get and set adress info for invoice
 			Address bill = new Address();
@@ -162,7 +163,7 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 
 			// Insert invoice
 			String insertInvoice = "INSERT INTO invoices "
-					+ "(user_id, address_info_id, date) VALUES (?,?,?)";
+					+ "(user_id, address_info_id, date, due_date) VALUES (?,?,?,?)";
 			ps = conn.prepareStatement(insertInvoice,
 					Statement.RETURN_GENERATED_KEYS);
 			ps.setInt(1, userDAO
@@ -170,8 +171,7 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 					.getUser_Id());
 			ps.setInt(2, address_info_id);
 			ps.setDate(3, invoice.getDate());
-			//temp sout
-			System.out.println("insert invoice sql: "+ps.toString());
+			ps.setDate(4, invoice.getDue_date());
 			ps.executeUpdate();
 			rs = ps.getGeneratedKeys();
 			int invoice_id = 0;

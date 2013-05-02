@@ -1,29 +1,14 @@
 package com.loska.util;
 
-
-
-import java.sql.Date;
-import java.util.Iterator;
-import java.util.List;
-
-import javax.validation.constraints.NotNull;
-
-import org.springframework.stereotype.Component;
-import org.springframework.util.AutoPopulatingList;
 import org.springframework.context.annotation.Scope;
-
-import com.loska.model.InvoiceRow;
-import com.loska.model.User;
+import org.springframework.stereotype.Component;
 
 @Component
 @Scope(value="request")
-public class InvoiceFormBackingBean {
-	private int invoiceId;
-
-//	private Integer reference;
-	private Date date;
-	private Date due_date;
-//	private String description;
+public class CustomerFormBackingBean {
+	private Integer userId;
+	private String name;
+	private String y_tunnus;
 	
 	//Ship to
 	private String ship_to_name;
@@ -40,16 +25,23 @@ public class InvoiceFormBackingBean {
 	private String bill_to_postcode;
 	private String bill_to_city;
 	private String bill_to_country;
-	
-	//Product rows
-	private AutoPopulatingList<InvoiceRow> rows = new AutoPopulatingList<InvoiceRow>(InvoiceRow.class);
-	
-	//Getters and setters
-	public int getInvoiceId() {
-		return invoiceId;
+	public Integer getUserId() {
+		return userId;
 	}
-	public void setInvoiceId(int invoiceId) {
-		this.invoiceId = invoiceId;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getY_tunnus() {
+		return y_tunnus;
+	}
+	public void setY_tunnus(String y_tunnus) {
+		this.y_tunnus = y_tunnus;
 	}
 	public String getShip_to_name() {
 		return ship_to_name;
@@ -123,35 +115,6 @@ public class InvoiceFormBackingBean {
 	public void setBill_to_country(String bill_to_country) {
 		this.bill_to_country = bill_to_country;
 	}
-	public AutoPopulatingList<InvoiceRow> getRows() {
-		return rows;
-	}
-	public void setRows(AutoPopulatingList<InvoiceRow> rows) {
-		this.rows = rows;
-	}
-	
-    public Date getDate() {
-		return date;
-	}
-	public void setDate(Date date) {
-		this.date = date;
-	}
-	
-	public Date getDue_date() {
-		return due_date;
-	}
-	public void setDue_date(Date due_date) {
-		this.due_date = due_date;
-	}
-	public void shrinkRows() {
-        synchronized(rows) {
-            for (Iterator i = this.rows.iterator(); i.hasNext();) {
-                if (i.next() == null) {
-                    i.remove();
-                }
-            }
-        }
-    }
-	
+
 	
 }
