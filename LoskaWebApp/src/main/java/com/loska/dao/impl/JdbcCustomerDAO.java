@@ -84,7 +84,6 @@ public class JdbcCustomerDAO implements CustomerDAO {
 				}
 			}
 		}
-
 	}
 
 	@Override
@@ -142,7 +141,8 @@ public class JdbcCustomerDAO implements CustomerDAO {
 	@Override
 	public List<Customer> findAllCustomersForUserId(int userId) {
 		ArrayList<Customer> customers = new ArrayList<Customer>();
-		String sql = "SELECT user_id, customer_id " + "FROM customers WHERE user_id=?";
+		String sql = "SELECT user_id, customer_id "
+				+ "FROM customers WHERE user_id=?";
 		Connection conn = null;
 		try {
 			conn = dataSource.getConnection();
@@ -168,6 +168,63 @@ public class JdbcCustomerDAO implements CustomerDAO {
 			}
 		}
 		return customers;
+	}
+
+	@Override
+	public void updateCustomer(Customer customer) {
+		Connection conn = null;
+		try {
+			conn = dataSource.getConnection();
+
+			// Insert address_info
+			String setAddressInfo = "UPDATE address_info "
+					+ "SET bill_to_name=?, bill_to_name2=?, bill_to_address=?, bill_to_postcode=?,"
+					+ "bill_to_city=?, bill_to_country=?, "
+					+ "ship_to_name=?, ship_to_name2=?, ship_to_address, ship_to_postcode=?,"
+					+ "ship_to_city=?, ship_to_country=? WHERE customer_id=?)";
+			PreparedStatement ps = conn.prepareStatement(setAddressInfo,
+					Statement.RETURN_GENERATED_KEYS);
+			ps.setString(1, customer.getBill_to().getName());
+			ps.setString(2, customer.getBill_to().getName2());
+			ps.setString(3, customer.getBill_to().getAddress());
+			ps.setString(4, customer.getBill_to().getPostcode());
+			ps.setString(5, customer.getBill_to().getCity());
+			ps.setString(6, customer.getBill_to().getCountry());
+			ps.setString(7, customer.getShip_to().getName());
+			ps.setString(8, customer.getShip_to().getName2());
+			ps.setString(9, customer.getShip_to().getAddress());
+			ps.setString(10, customer.getShip_to().getPostcode());
+			ps.setString(11, customer.getShip_to().getCity());
+			ps.setString(12, customer.getShip_to().getCountry());
+			ps.setInt(13, customer.getCustomer_id());
+			ps.executeUpdate();
+			ResultSet rs = ps.getGeneratedKeys();
+			int address_info_id = 0;
+			if (rs.next()) {
+				address_info_id = rs.getInt(1);
+			}
+
+			// Update customer
+			String insertcustomer = "UPDATE customers "
+					+ "SET name=?, y_tunnus=? WHERE customerId=?";
+			ps = conn.prepareStatement(insertcustomer);
+			ps.setString(1, customer.getName());
+			ps.setString(2, customer.getY_tunnus());
+			ps.setInt(3, customer.getCustomer_id());
+			ps.executeUpdate();
+			ps.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
 	}
 
 }

@@ -14,6 +14,7 @@
 				<td>${i.name}</td>
 				<td>${i.y_tunnus}</td>
 					<td><a href="newInvoiceForCustomer?customer_id=${i.customer_id}">Uusi lasku</a></td>
+					<td><a href="editCustomer?customer_id=${i.customer_id}">Muokkaa</a></td>
 			</tr>
 		</c:forEach>
 	</table>

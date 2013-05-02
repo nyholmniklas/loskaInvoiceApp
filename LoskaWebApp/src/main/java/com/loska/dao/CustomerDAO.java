@@ -11,4 +11,5 @@ public interface CustomerDAO {
 	public abstract void insertCustomer(Customer customer);
 	public abstract Customer findCustomerById(int customerId);
 	public abstract List<Customer> findAllCustomersForUserId(int userId);
+	public abstract void updateCustomer(Customer customer);
 }

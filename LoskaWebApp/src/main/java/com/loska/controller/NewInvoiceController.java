@@ -58,7 +58,10 @@ public class NewInvoiceController {
 //		row.setPrice(15f);
 //		row.setTax(24f);
 		form.getRows().add(row);
-		
+		//set date
+		java.util.Calendar cal = java.util.Calendar.getInstance(); 
+		java.sql.Date date = new Date(cal.getTimeInMillis());
+		form.setDate(date);
 		return new ModelAndView("newInvoice", "invoiceForm", form);
 	}
 	
@@ -70,10 +73,7 @@ public class NewInvoiceController {
 			return "newInvoice";
 		}
 		else  {
-			//set date
-//			java.util.Calendar cal = java.util.Calendar.getInstance(); 
-//			java.sql.Date date = new Date(cal.getTimeInMillis());
-//			form.setDate(date);
+
 			
 			//Get user from session
 			int userId = userSession.getUserId();
@@ -95,6 +95,11 @@ public class NewInvoiceController {
 		
 		InvoiceRow row = new InvoiceRow();
 		form.getRows().add(row);
+		
+		//set date
+		java.util.Calendar cal = java.util.Calendar.getInstance(); 
+		java.sql.Date date = new Date(cal.getTimeInMillis());
+		form.setDate(date);
 		
 		Address bill_to = customer.getBill_to();
 		Address ship_to = customer.getShip_to();
