@@ -18,6 +18,7 @@
 				<li><a href='<c:url value="/newInvoice"/>'>Luo uusi lasku</a></li>
 				<li><a href='<c:url value="/invoices"/>'>Näytä omat laskut</a></li>
 				<li><a href='<c:url value="/newCustomer"/>'>Luo uusi asiakas</a></li>
+				<li><a href='<c:url value="/customers"/>'>Näytä omat asiakkaat</a></li>
 				<li><a href="<c:url value="/j_spring_security_logout" />">Kirjaudu
 						ulos</a></li>
 			</ul>

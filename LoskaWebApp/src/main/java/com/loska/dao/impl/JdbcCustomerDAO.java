@@ -101,7 +101,7 @@ public class JdbcCustomerDAO implements CustomerDAO {
 			rs.next();
 
 			customer.setName(rs.getString("name"));
-			customer.setCustomerId(rs.getInt("customer_id"));
+			customer.setCustomer_id(rs.getInt("customer_id"));
 			customer.setY_tunnus(rs.getString("y_tunnus"));
 			// Get and set adress info for customer
 			Address bill = new Address();
@@ -167,7 +167,6 @@ public class JdbcCustomerDAO implements CustomerDAO {
 				}
 			}
 		}
-		System.out.println("CUSTOMERS: "+customers);
 		return customers;
 	}
 
