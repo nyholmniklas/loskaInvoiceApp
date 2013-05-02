@@ -98,6 +98,7 @@
 					</tr>
 				</table>
 			</div>
+			<input type="hidden" path="customer_id"/>
 			<tr>
 				<td colspan="2"><input type="submit" value="Tallenna muutokset" /></td>
 			</tr>

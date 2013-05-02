@@ -1,20 +1,19 @@
 div#address_info {
 	position: "absolute";
 	right:100px;
-	height: 200px;
+	height: 300px;
 	overflow:hidden;
 }
 
 div#bill_to {
 	position: "relative";
 	float:left;
-	width: 30%;
-		height: 200px;
+	width: 40%;
+		height: 300px;
 }
 
 div#ship_to {
 	position: "relative";
 	float:left;
-	width: 30%;
-			height: 200px;
+			height: 300px;
 }

@@ -47,25 +47,36 @@
 
 	<form:form method="POST" action="newInvoice"
 		modelAttribute="invoiceForm">
-		<br/>
+		<br />
 		<div id="dates">
-			<form:label path="date">
+			<table>
+				<tr>
+					<th><form:label path="date">
 			Pvm:
-			</form:label>
-			<form:input path="date" class="datepicker" />
-			<br/>
-			<form:label path="due_date">
+			</form:label></th>
+					<th><form:label path="due_date">
 			Eräpäivä:
-			</form:label>
-			<form:input path="due_date" class="datepicker" />
+			</form:label></th>
+				</tr>
+				<tr>
+				<td>
+				<form:input path="date" class="datepicker" />
+				</td>
+				<td><form:input path="due_date" class="datepicker" /></td>
+				</tr>
+			</table>
 		</div>
-		<br/>
+
+		<br />
 		<div id="address_info">
 
 			<!-- 		Bill to -->
 			<div id="bill_to">
-				<b>Laskutusosoite: </b><br />
+				
 				<table>
+				<tr>
+				<th colspan="2">Laskutusosoite:</th>
+				</tr>
 					<tr>
 						<td><form:label path="bill_to_name">Nimi:</form:label></td>
 						<td><form:input path="bill_to_name" /></td>
@@ -101,8 +112,10 @@
 
 			<!-- 		Ship to -->
 			<div id="ship_to">
-				<b>Toimitusosoite: </b><br />
 				<table>
+								<tr>
+				<th colspan="2">Toimitusosoite:</th>
+				</tr>
 					<tr>
 						<td><form:label path="ship_to_name">Nimi:</form:label></td>
 						<td><form:input path="ship_to_name" /></td>

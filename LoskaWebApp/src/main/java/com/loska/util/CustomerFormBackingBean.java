@@ -9,6 +9,7 @@ public class CustomerFormBackingBean {
 	private Integer userId;
 	private String name;
 	private String y_tunnus;
+	private Integer customer_id;
 	
 	//Ship to
 	private String ship_to_name;
@@ -114,6 +115,12 @@ public class CustomerFormBackingBean {
 	}
 	public void setBill_to_country(String bill_to_country) {
 		this.bill_to_country = bill_to_country;
+	}
+	public Integer getCustomer_id() {
+		return customer_id;
+	}
+	public void setCustomer_id(Integer customer_id) {
+		this.customer_id = customer_id;
 	}
 
 	

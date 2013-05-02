@@ -54,7 +54,7 @@ public class NewCustomerController {
 		
 		CustomerFormConverter converter = new CustomerFormConverter();
 		Customer customer = converter.convertFormToCustomer(form, user);
-		customerDAO.updateCustomer(customer);
+		customerDAO.insertCustomer(customer);
 		return "redirect:index";
 	}
 }

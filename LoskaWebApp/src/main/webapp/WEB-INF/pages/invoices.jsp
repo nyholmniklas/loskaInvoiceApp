@@ -4,6 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Loska</title>
+<link rel="stylesheet" href="css/base.css">
 </head>
 <body>
 	<jsp:include page="header.jsp" />

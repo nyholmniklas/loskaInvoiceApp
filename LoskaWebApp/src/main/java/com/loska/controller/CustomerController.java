@@ -39,7 +39,6 @@ public class CustomerController {
 		Customer customer = customerDAO.findCustomerById(customer_id);
 		
 		CustomerFormBackingBean form = new CustomerFormBackingBean();
-		
 		//Set name and ytunnus
 		form.setName(customer.getName());
 		form.setY_tunnus(customer.getY_tunnus());
@@ -47,6 +46,9 @@ public class CustomerController {
 		//Set address info
 		Address bill_to = customer.getBill_to();
 		Address ship_to = customer.getShip_to();
+		
+		form.setCustomer_id(customer.getCustomer_id());
+		
 		form.setBill_to_name(bill_to.getName());
 		form.setBill_to_name2(bill_to.getName2());
 		form.setBill_to_address(bill_to.getAddress());
@@ -62,7 +64,6 @@ public class CustomerController {
 		
 //		List<Invoice> invoices = invoiceDAO.findInvoiceByCustomerId(customer.getCustomer_id());
 		model.addAttribute("customerForm", form);
-		
 		ModelAndView mav = new ModelAndView("/editCustomer");
 		mav.addAllObjects(model);
 		return mav;
@@ -71,11 +72,13 @@ public class CustomerController {
 	@RequestMapping(value="/editCustomer", method=RequestMethod.POST)
 	public String updateCustomer(@Valid @ModelAttribute CustomerFormBackingBean form,
 			BindingResult result, ModelMap model){
+		//TODO CHECK IF CUSTOMER'S USERID MATCHES SESSION USER ID!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		int userId = userSession.getUserId();
 		User user = userDAO.findByUserId(userId);
 		CustomerFormConverter converter = new CustomerFormConverter();
 		Customer customer = converter.convertFormToCustomer(form, user);
-		customerDAO.insertCustomer(customer);
+		customer.setCustomer_id(form.getCustomer_id());
+		customerDAO.updateCustomer(customer);
 		return "redirect:index";
 	}
 }

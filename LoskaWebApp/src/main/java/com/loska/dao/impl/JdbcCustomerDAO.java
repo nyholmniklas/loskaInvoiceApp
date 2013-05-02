@@ -181,7 +181,7 @@ public class JdbcCustomerDAO implements CustomerDAO {
 					+ "SET bill_to_name=?, bill_to_name2=?, bill_to_address=?, bill_to_postcode=?,"
 					+ "bill_to_city=?, bill_to_country=?, "
 					+ "ship_to_name=?, ship_to_name2=?, ship_to_address, ship_to_postcode=?,"
-					+ "ship_to_city=?, ship_to_country=? WHERE customer_id=?)";
+					+ "ship_to_city=?, ship_to_country=? WHERE customer_id=?";
 			PreparedStatement ps = conn.prepareStatement(setAddressInfo,
 					Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, customer.getBill_to().getName());
@@ -198,11 +198,6 @@ public class JdbcCustomerDAO implements CustomerDAO {
 			ps.setString(12, customer.getShip_to().getCountry());
 			ps.setInt(13, customer.getCustomer_id());
 			ps.executeUpdate();
-			ResultSet rs = ps.getGeneratedKeys();
-			int address_info_id = 0;
-			if (rs.next()) {
-				address_info_id = rs.getInt(1);
-			}
 
 			// Update customer
 			String insertcustomer = "UPDATE customers "
