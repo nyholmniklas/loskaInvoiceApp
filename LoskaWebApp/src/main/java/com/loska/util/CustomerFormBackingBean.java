@@ -1,5 +1,6 @@
 package com.loska.util;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -12,20 +13,32 @@ public class CustomerFormBackingBean {
 	private String customer_id;
 	
 	//Ship to
+	@NotBlank
 	private String ship_to_name;
 	private String ship_to_name2;
+	@NotBlank
 	private String ship_to_address;
+	@NotBlank
 	private String ship_to_postcode;
+	@NotBlank
 	private String ship_to_city;
+	@NotBlank
 	private String ship_to_country;
 	
+	
 	//Bill to
+	@NotBlank
 	private String bill_to_name;
 	private String bill_to_name2;
+	@NotBlank
 	private String bill_to_address;
+	@NotBlank
 	private String bill_to_postcode;
+	@NotBlank
 	private String bill_to_city;
+	@NotBlank
 	private String bill_to_country;
+	
 	public Integer getUserId() {
 		return userId;
 	}

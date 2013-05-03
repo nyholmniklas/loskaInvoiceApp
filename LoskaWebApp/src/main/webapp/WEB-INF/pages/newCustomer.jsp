@@ -11,15 +11,18 @@
 	<form:form method="POST" action="newCustomer"
 		modelAttribute="customerForm">
 		<table>
+									<tr>
+					<th colspan="2">Asiakkaan tiedot:</th>
+					</tr>
 			<tr>
 				<td><form:label path="name">Nimi: </form:label></td>
 				<td><form:input path="name" /></td>
-				<td><form:errors path="name" /></td>
+				<form:errors path="name" />
 			</tr>
 			<tr>
 				<td><form:label path="y_tunnus">Y-tunnus:</form:label></td>
 				<td><form:input path="y_tunnus" /></td>
-				<td><form:errors path="y_tunnus" /></td>
+				<form:errors path="y_tunnus" />
 			</tr>
 			</div>
 		</table>
@@ -27,8 +30,11 @@
 
 			<!-- 		Bill to -->
 			<div id="bill_to">
-				<b>Laskutusosoite: </b><br />
+				
 				<table>
+								<tr>
+				<th colspan="2">Laskutusosoite:</th>
+				</tr>
 					<tr>
 						<td><form:label path="bill_to_name">Nimi:</form:label></td>
 						<td><form:input path="bill_to_name" /></td>
@@ -64,8 +70,11 @@
 
 			<!-- 		Ship to -->
 			<div id="ship_to">
-				<b>Toimitusosoite: </b><br />
+				
 				<table>
+								<tr>
+				<th colspan="2">Toimitusosoite:</th>
+				</tr>
 					<tr>
 						<td><form:label path="ship_to_name">Nimi:</form:label></td>
 						<td><form:input path="ship_to_name" /></td>

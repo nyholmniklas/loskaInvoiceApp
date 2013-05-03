@@ -41,19 +41,24 @@ public class NewCustomerController {
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView getNewCustomerForm(ModelMap model) {
-		CustomerFormBackingBean form = new CustomerFormBackingBean();
-
-		return new ModelAndView("newCustomer", "customerForm", form);
+		
+		return new ModelAndView("newCustomer", "customerForm", new CustomerFormBackingBean());
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public String createNewCustomer(@Valid @ModelAttribute CustomerFormBackingBean form,
+	public String createNewCustomer(@Valid @ModelAttribute CustomerFormBackingBean customerForm,
 			BindingResult result, ModelMap model) {
+		
+		if (result.hasErrors()) {
+			System.out.println("got here");
+			return "newCustomer";
+		}
+		
 		int userId = userSession.getUserId();
 		User user = userDAO.findByUserId(userId);
 		
 		CustomerFormConverter converter = new CustomerFormConverter();
-		Customer customer = converter.convertFormToCustomer(form, user);
+		Customer customer = converter.convertFormToCustomer(customerForm, user);
 		customerDAO.insertCustomer(customer);
 		return "redirect:index";
 	}

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.AutoPopulatingList;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Validator;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -40,8 +39,7 @@ public class NewInvoiceController {
 	private CustomerDAO customerDAO;
 	@Autowired
 	private UserDAO userDAO;
-	@Autowired
-	private Validator validator;
+
 	
     @InitBinder
     public void setDataBinder(WebDataBinder dataBinder) {
@@ -66,11 +64,12 @@ public class NewInvoiceController {
 	}
 	
 	@RequestMapping(value="/newInvoice", method=RequestMethod.POST)
-	public String createNewInvoice(@Valid @ModelAttribute InvoiceFormBackingBean form, BindingResult result,
+	public ModelAndView createNewInvoice(@Valid @ModelAttribute InvoiceFormBackingBean form, BindingResult result,
 			ModelMap model) {
 		
 		if (result.hasErrors()) {
-			return "newInvoice";
+			ModelAndView mav = new ModelAndView("newInvoice", "invoiceForm", form);
+			return mav;
 		}
 		else  {
 
@@ -83,12 +82,12 @@ public class NewInvoiceController {
 			Invoice invoice = converter.convertFormToInvoice(form, user);
 			invoiceDAO.insert(invoice);
 		}
-		return "redirect:index";
+		return new ModelAndView("redirect:index");
 	}
 	
 	@RequestMapping(value="/newInvoiceForCustomer", method=RequestMethod.GET)
-	public ModelAndView getNewInvoiceFormForCustomer(@RequestParam String customer_id, ModelMap model){
-		InvoiceFormBackingBean form = new InvoiceFormBackingBean();
+	public ModelAndView getNewInvoiceFormForCustomer(@ModelAttribute InvoiceFormBackingBean form, @RequestParam String customer_id, BindingResult result,
+			ModelMap model){
 		//TODO CHECK IF CUSTOMER'S USERID MATCHES SESSION USER ID!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		
 		Customer customer = customerDAO.findCustomerById(Integer.parseInt(customer_id));

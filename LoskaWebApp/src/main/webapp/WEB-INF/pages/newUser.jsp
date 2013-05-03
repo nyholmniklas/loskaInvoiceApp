@@ -3,6 +3,7 @@
 <html>
 <head>
 <title>Luo Uusi Käyttäjätili</title>
+<link rel="stylesheet" href="css/base.css">
 </head>
 <body>
 	<jsp:include page="header.jsp" />

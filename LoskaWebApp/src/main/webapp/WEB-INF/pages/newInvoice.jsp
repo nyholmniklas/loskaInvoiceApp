@@ -118,18 +118,18 @@
 				</tr>
 					<tr>
 						<td><form:label path="ship_to_name">Nimi:</form:label></td>
-						<td><form:input path="ship_to_name" /></td>
-						<form:errors path="ship_to_name" />
+						<td><form:input path="ship_to_name" /><form:errors path="ship_to_name" /></td>
+						
 					</tr>
 					<tr>
 						<td><form:label path="ship_to_name2">Nimi2:</form:label></td>
-						<td><form:input path="ship_to_name2" /></td>
-						<form:errors path="ship_to_name2" />
+						<td><form:input path="ship_to_name2" /><form:errors path="ship_to_name2" /></td>
+						
 					</tr>
 					<tr>
 						<td><form:label path="ship_to_address">Katuosoite:</form:label></td>
-						<td><form:input path="ship_to_address" /></td>
-						<form:errors path="ship_to_address" />
+						<td><form:input path="ship_to_address" /><form:errors path="ship_to_address" /></td>
+						
 					</tr>
 					<tr>
 						<td><form:label path="ship_to_postcode">Postionumero:</form:label></td>

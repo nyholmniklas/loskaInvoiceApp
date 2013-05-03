@@ -20,7 +20,6 @@ public class IndexController {
 	
 	@RequestMapping(value="/index", method = RequestMethod.POST)
 	public String index(ModelMap model, Principal principal) {
-
 		return "index";
 	}
 	
