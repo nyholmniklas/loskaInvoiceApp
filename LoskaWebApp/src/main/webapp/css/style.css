@@ -5,8 +5,37 @@
 #header {
         width:100%;
         height:74px;
+        
 }
 
 #container_area {
-        height:100%;
+		height:100%;
+	box-shadow: 6px 0px 10px -7px #888, -6px 0px 10px -7px #888;
+
  }
+ 
+#hor-zebra
+{
+	font-size: 12px;
+	width: 480px;
+	text-align: left;
+	border-collapse: collapse;
+}
+#hor-zebra th
+{
+	font-size: 14px;
+	font-weight: normal;
+	padding: 10px 8px;
+	color: black;
+}
+#hor-zebra td
+{
+	padding: 8px;
+	color: #626262;
+	
+}
+
+#hor-zebra .odd
+{
+	background: #f5e7d8; 
+}

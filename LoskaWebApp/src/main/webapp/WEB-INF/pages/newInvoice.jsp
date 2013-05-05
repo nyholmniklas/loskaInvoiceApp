@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/960.css">
 <link rel="stylesheet" href="css/text.css">
+<link rel="stylesheet" href="css/style.css">
 <link href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
 <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
 <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
@@ -27,7 +28,7 @@
 </head>
 <body>
 	<jsp:include page="header.jsp" />
-	<div class="container_12">
+	<div id="container_area" class="container_12">
 		<div class="grid_3 prefix_1">
 			<h2>Luo Uusi Lasku</h2>
 		</div>

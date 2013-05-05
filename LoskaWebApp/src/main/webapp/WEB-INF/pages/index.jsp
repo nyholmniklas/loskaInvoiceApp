@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/960.css">
 <link rel="stylesheet" href="css/text.css">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 	<jsp:include page="header.jsp" />

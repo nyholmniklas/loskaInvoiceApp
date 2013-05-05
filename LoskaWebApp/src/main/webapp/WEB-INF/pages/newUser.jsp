@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/960.css">
 <link rel="stylesheet" href="css/text.css">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body onload='document.f.j_username.focus();'>
 	<jsp:include page="header.jsp" />
@@ -21,8 +22,7 @@
 				<form:errors path="password" />
 				<input type="submit" value="Rekisterˆidy" />
 			</form:form>
-			<a href='<c:url value="/login"/>'>Kirjaudu sis‰‰n
-				olemassaolevilla tunnuksilla.</a>
+			<a href='<c:url value="/login"/>'>Kirjaudu sis‰‰n olemassaolevilla tunnuksilla.</a>
 		</div>
 	</div>
 </body>

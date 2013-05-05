@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/960.css">
 <link rel="stylesheet" href="css/text.css">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body onload='document.f.j_username.focus();'>
 	<jsp:include page="header.jsp" />
@@ -25,8 +26,7 @@
 				Käyttäjätunnus: <input type='text' name='j_username' value='' />
 				Salasana: <input type='password' name='j_password' />
 				<br> 
-				<input
-					name="submit" type="submit" value="Kirjaudu" />
+				<input name="submit" type="submit" value="Kirjaudu" />
 			</form>
 			<a href='<c:url value="/newUser"/>'>Luo uusi käyttäjätili.</a>
 		</div>
