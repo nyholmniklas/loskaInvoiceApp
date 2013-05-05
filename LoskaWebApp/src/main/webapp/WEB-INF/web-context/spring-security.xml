@@ -9,14 +9,15 @@
 
 <!-- <http pattern="/css/**" security="none"/> -->
 <security:http pattern="/login" security="none"/>
-	<security:http auto-config="true">
+	<security:http>
 		<security:intercept-url pattern="/newUser" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 				<security:intercept-url pattern="/css/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 								<security:intercept-url pattern="/js/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+								<security:intercept-url pattern="/images/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 <!-- 				<security:intercept-url pattern="/index" access="ROLE_USER" /> -->
 		<security:intercept-url pattern="/**" access="ROLE_USER" />
 		<!-- show login form -->
-		<security:form-login login-page="/login" default-target-url="/index" authentication-failure-url="/loginfailed" authentication-success-handler-ref="authSuccess"/>
+		<security:form-login login-page="/login"  default-target-url="/index" authentication-failure-url="/loginfailed" authentication-success-handler-ref="authSuccess"/>
 		<security:logout logout-success-url="/login" />
 	</security:http>
 	

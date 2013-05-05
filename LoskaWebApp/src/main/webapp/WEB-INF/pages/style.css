@@ -1,0 +1,12 @@
+#header_area {
+        background-image:url('../images/header_pattern.jpg');
+}
+
+#header {
+        width:100%;
+        height:74px;
+}
+
+#container_area {
+height: auto;
+ }

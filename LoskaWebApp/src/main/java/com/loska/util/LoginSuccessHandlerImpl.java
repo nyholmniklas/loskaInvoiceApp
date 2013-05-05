@@ -20,9 +20,10 @@ public class LoginSuccessHandlerImpl extends SavedRequestAwareAuthenticationSucc
 	
 	@Override
 	    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws ServletException, IOException {
+		userSession = new UserSession();
 		userSession.setUserId(userDAO.findByUsername(authentication.getName()).getUser_Id());
 		response.sendRedirect("index");
-	    super.onAuthenticationSuccess(request, response, authentication);
+//	    super.onAuthenticationSuccess(request, response, authentication);
 
 	   }
 }

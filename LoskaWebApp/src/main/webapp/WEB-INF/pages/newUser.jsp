@@ -1,32 +1,29 @@
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
 <title>Luo Uusi K‰ytt‰j‰tili</title>
 <link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/960.css">
+<link rel="stylesheet" href="css/text.css">
 </head>
-<body>
+<body onload='document.f.j_username.focus();'>
 	<jsp:include page="header.jsp" />
-	<h2>Luo Uusi K‰ytt‰j‰tili</h2>
-	<form:form method="POST" action="newUser" modelAttribute="user">
-		<table>
-			<tr>
-				<td><form:label path="username">K‰ytt‰j‰tunnus: </form:label></td>
-				<td><form:input path="username" /></td>
-								<td><form:errors path="username"/></td>
-			</tr>
-			<tr>
-				<td><form:label path="password">Salasana:</form:label></td>
-				<td><form:password path="password" /></td>
-				<td><form:errors path="password"/></td>
-			</tr>
-			<tr>
-				<td colspan="2"><input type="submit" value="Rekisterˆidy" /></td>
-			</tr>
-		</table>
-	</form:form>
-	<br>
-	<a href='<c:url value="/login"/>'>Kirjaudu sis‰‰n olemassaolevilla
-		tunnuksilla.</a>
+	<div id="container_area" class="container_12">
+		<div class="grid_4 prefix_1">
+			<h2>Luo Uusi K‰ytt‰j‰tili</h2>
+			<form:form method="POST" action="newUser" modelAttribute="user">
+				<form:label path="username">K‰ytt‰j‰tunnus: </form:label>
+				<form:input path="username" />
+				<form:errors path="username" />
+				<form:label path="password">Salasana:</form:label>
+				<form:password path="password" />
+				<form:errors path="password" />
+				<input type="submit" value="Rekisterˆidy" />
+			</form:form>
+			<a href='<c:url value="/login"/>'>Kirjaudu sis‰‰n
+				olemassaolevilla tunnuksilla.</a>
+		</div>
+	</div>
 </body>
 </html>

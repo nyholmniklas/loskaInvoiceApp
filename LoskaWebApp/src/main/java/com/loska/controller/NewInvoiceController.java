@@ -101,6 +101,7 @@ public class NewInvoiceController {
 		java.util.Calendar cal = java.util.Calendar.getInstance(); 
 		java.sql.Date date = new Date(cal.getTimeInMillis());
 		form.setDate(date);
+		form.setDue_date(date);
 		
 		Address bill_to = customer.getBill_to();
 		Address ship_to = customer.getShip_to();
