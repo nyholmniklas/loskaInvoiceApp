@@ -1,3 +1,7 @@
+h1 {
+	color:#885334;
+}
+
 h2 {
 	color:lightGray;
 }
@@ -22,6 +26,13 @@ h2 {
     {
         width:140px;
     }
+  
+#login_area {
+	-webkit-box-shadow: 1px 1px 5px rgba(50, 50, 50, 0.59);
+-moz-box-shadow:    1px 1px 5px rgba(50, 50, 50, 0.59);
+box-shadow:         1px 1px 5px rgba(50, 50, 50, 0.59);
+text-align:center
+}
     
 #invoice_form table {
 	font-family: 'helvetica';
@@ -29,7 +40,8 @@ h2 {
 	color:black;
 	width:100%;
 }
-#invoice_form table th {
+
+table th {
 	background:#fde5bb;
 	padding: 8px;
 }
@@ -61,7 +73,7 @@ h2 {
 
 #hor-zebra .odd
 {
-	background: #fde5bb; 
+	background: #FEEFD6; 
 }
 
 /* button stuff */

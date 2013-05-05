@@ -12,7 +12,7 @@
 <body>
 	<jsp:include page="header.jsp" />
 	<div id="container_area" class="container_12">
-		<div class="grid_5 prefix_2">
+		<div class="grid_5 prefix_1">
 		<h2>Asiakkaat</h2>
 		<table id="hor-zebra">
 			<tr>

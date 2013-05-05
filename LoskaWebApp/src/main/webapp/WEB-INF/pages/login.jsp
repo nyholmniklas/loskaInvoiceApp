@@ -11,24 +11,31 @@
 <body onload='document.f.j_username.focus();'>
 	<jsp:include page="header.jsp" />
 	<div id="container_area" class="container_12">
-		<div id="new_invoice_link" class="grid_4 prefix_1">
-			<h3>
-				<c:if test="${not empty error}">
-					<div class="errorblock">
-						Sis‰‰nkirjautuminen ep‰onnistui. Yrit‰ uudestaan.<br /> Caused
-						:${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
-					</div>
-				</c:if>
-			</h3>
-			<h2>Kirjaudu Sis‰‰n</h2>
+		<div class="grid_7 prefix_1">
+		<br>
+			<img src="images/index_splash.jpg">
+		</div>
+		<div id="login_area" class="grid_4">
+
+			<h1>Kirjaudu Sis‰‰n</h1>
 			<form name='f' action="<c:url value='j_spring_security_check' />"
 				method='POST'>
-				K‰ytt‰j‰tunnus: <input type='text' name='j_username' value='' /><br>
-				Salasana: <input type='password' name='j_password' />
-				<br/> 
-				<input class="myButton" name="submit" type="submit" value="Kirjaudu" />
+
+					<h3>
+						<c:if test="${not empty error}">
+							<div class="errorblock">
+								Sis‰‰nkirjautuminen ep‰onnistui. Yrit‰ uudestaan.<br /> Caused
+								:${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+							</div>
+						</c:if>
+					</h3>
+					<p>K‰ytt‰j‰tunnus: <input type='text' name='j_username' value='' /></p>
+					<p>Salasana: <input type='password' name='j_password' /></p>
+						<p><input class="myButton" name="submit" type="submit" value="Kirjaudu" /></p>
+
+						<p><a href='<c:url value="/newUser"/>'>Luo uusi k‰ytt‰j‰tili.</a></p>
 			</form>
-			<a href='<c:url value="/newUser"/>'>Luo uusi k‰ytt‰j‰tili.</a>
+
 		</div>
 	</div>
 </body>
