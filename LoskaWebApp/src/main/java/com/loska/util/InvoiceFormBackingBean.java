@@ -20,9 +20,8 @@ public class InvoiceFormBackingBean {
 	// private Integer reference;
 
 	private Date date;
-
 	private Date due_date;
-	// private String description;
+	 private String description;
 
 	// Ship to
 //	@NotBlank
@@ -181,6 +180,16 @@ public class InvoiceFormBackingBean {
 
 	public void setDue_date(Date due_date) {
 		this.due_date = due_date;
+	}
+
+	
+	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public void shrinkRows() {

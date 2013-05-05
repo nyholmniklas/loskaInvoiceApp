@@ -28,12 +28,14 @@
 </head>
 <body>
 	<jsp:include page="header.jsp" />
-	<div id="container_area" class="container_12">
-		<div class="grid_3 prefix_1">
-			<h2>Luo Uusi Lasku</h2>
-		</div>
-		<div id="new_invoice_form" class="grid_11 prefix_1">
-			<jsp:include page="newInvoiceForm.jsp" />
+	<div class="container_12">
+		<div id="container_area">
+			<div class="grid_3 prefix_1">
+				<h2>Luo Uusi Lasku</h2>
+			</div>
+			<div id="new_invoice_form" class="grid_11 prefix_1">
+				<jsp:include page="newInvoiceForm.jsp" />
+			</div>
 		</div>
 	</div>
 </body>

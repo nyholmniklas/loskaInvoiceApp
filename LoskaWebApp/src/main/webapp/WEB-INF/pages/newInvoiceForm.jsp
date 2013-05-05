@@ -2,29 +2,27 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <form:form method="POST" action="newInvoice"
-	modelAttribute="invoiceForm">
+	modelAttribute="invoiceForm" id="invoice_form">
 	<div class="grid_2">
-		<form:label path="date">Pvm:</form:label>
-		</br>
-		<form:input path="date" class="datepicker" />
-		</br>
-		<form:label path="due_date">Eräpäivä:</form:label>
-		</br>
-		<form:input path="due_date" class="datepicker" />
-		</br>
 		<table>
-			<th></th>
-			<tr></tr>
-			<th></th>
-			<tr></tr>
+			<tr>
+				<th colspan="2">Maksuehdot:</th>
+			</tr>
+			<tr>
+				<td><form:label path="date">Pvm:</form:label></td>
+			</tr>
+			<tr>
+				<td><form:input path="date" class="datepicker" /></td>
+			</tr>
+			<tr>
+				<td><form:label path="due_date">Eräpäivä:</form:label></td>
+			</tr>
+			<tr>
+				<td><form:input path="due_date" class="datepicker" /></td>
+			</tr>
 		</table>
 	</div>
-
-	<br />
-
-	<!-- 		Bill to -->
-	<div class="grid_4">
-
+	<div class="grid_3 prefix_1">
 		<table>
 			<tr>
 				<th colspan="2">Laskutusosoite:</th>
@@ -61,9 +59,7 @@
 			</tr>
 		</table>
 	</div>
-
-	<!-- 		Ship to -->
-	<div class="grid_4">
+	<div class="grid_3 prefix_1">
 		<table>
 			<tr>
 				<th colspan="2">Toimitusosoite:</th>
@@ -104,8 +100,17 @@
 		</table>
 	</div>
 
-
-	<div class="grid_10">
+	<div class="grid_10 suffix_2">
+		<table>
+			<tr>
+				<th><form:label path="description">Saate:</form:label></th>
+			</tr>
+			<tr>
+				<td><form:input path="description" width="100%" /></td>
+			</tr>
+		</table>
+	</div>
+	<div class="grid_10 suffix_2">
 		<div id="list">
 			<table>
 				<tr>
@@ -114,6 +119,7 @@
 					<th>Hinta</th>
 					<th>ALV</th>
 					<th>Yht</th>
+					<td><a href="#" class="list-add">Add</a></td>
 				</tr>
 				<c:forEach items="${invoiceForm.rows}" var="row" varStatus="status">
 					<!-- 					<div > -->
@@ -126,17 +132,19 @@
 							value="${row.price}" /></td>
 						<td><input name="rows[${status.index}].tax"
 							value="${row.tax}" /></td>
+						<td></td>
 						<td><a href="#" class="list-remove">Poista</a></td>
-
 					</tr>
 					<!-- 			</div> -->
 				</c:forEach>
+
 			</table>
-			<a href="#" class="list-add">Add</a>
+
 		</div>
-
-
-		<input type="submit" value="Luo lasku" /> <a
-			href='<c:url value="/index"/>'><input type="button"
-			value="Peruuta" /></a>
+		<div class="grid_3 prefix_7">
+	<br/>
+			<input type="submit" class="myButton" value="Luo lasku" /> <a
+				href='<c:url value="/index"/>'><input class="myButton"
+				type="button" value="Peruuta" /></a>
+		</div>
 </form:form>

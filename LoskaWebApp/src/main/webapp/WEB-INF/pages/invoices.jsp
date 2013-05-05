@@ -11,27 +11,31 @@
 </head>
 <body>
 	<jsp:include page="header.jsp" />
-	<h2>Laskut</h2>
-	<!-- 	<br> -->
-	<table>
-		<tr>
-			<th>Toimitusnimi</th>
-			<th>Laskutusnimi</th>
-			<th>Laskupvm</th>
-			<th>Eräpvm</th>
-		</tr>
-		<c:forEach items="${invoices}" var="i">
-			<tr>
-				<td>${i.ship_to.name}</td>
-				<td>${i.bill_to.name}</td>
-				<td>${i.date}</td>
-				<td>${i.due_date}</td>
-			</tr>
-		</c:forEach>
-	</table>
-	<br>
-	<a href='<c:url value="/newInvoice"/>'>Luo uusi lasku.</a>
-	<br>
-	<a href="<c:url value="/j_spring_security_logout" />">Kirjaudu ulos</a>
+
+
+	<div class="container_12" id="container_area">
+			<div class="grid_5 prefix_1">
+				<h2>Laskut</h2>
+				<table id="hor-zebra">
+					<tr>
+						<th>Toimitusnimi</th>
+						<th>Laskutusnimi</th>
+						<th>Laskupvm</th>
+						<th>Eräpvm</th>
+						<th>Saate</th>
+					</tr>
+					<c:forEach items="${invoices}" var="i" varStatus="loopStatus">
+						<tr class="${loopStatus.index % 2 == 0 ? 'even' : 'odd'}">
+							<td>${i.ship_to.name}</td>
+							<td>${i.bill_to.name}</td>
+							<td>${i.date}</td>
+							<td>${i.due_date}</td>
+							<td>${i.description}</td>
+						</tr>
+					</c:forEach>
+				</table>
+				<a href='<c:url value="/newInvoice"/>'>Luo uusi lasku.</a>
+			</div>
+	</div>
 </body>
 </html>

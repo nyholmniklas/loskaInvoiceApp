@@ -11,7 +11,8 @@
 <body>
 	<jsp:include page="header.jsp" />
 	<div id="container_area" class="container_12">
-		<div id="new_invoice_link" class="grid_2">
+		<div id="index_links" class="grid_4 prefix_1">
+						<h2>Terveltuloa</h2>
 			<li><a href='<c:url value="/newInvoice"/>'>Luo uusi lasku</a></li>
 			<li><a href='<c:url value="/invoices"/>'>Näytä omat laskut</a></li>
 			<li><a href='<c:url value="/newCustomer"/>'>Luo uusi asiakas</a></li>

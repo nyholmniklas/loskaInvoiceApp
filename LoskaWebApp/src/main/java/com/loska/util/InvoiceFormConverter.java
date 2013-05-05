@@ -44,6 +44,8 @@ public class InvoiceFormConverter {
 		bill_to.setCountry(form.getBill_to_country());
 		invoice.setBill_to(bill_to);
 		
+		invoice.setDescription(form.getDescription());
+		
 		//Set products rows
 		ArrayList<InvoiceRow> rows = new ArrayList<InvoiceRow>();
 		for (InvoiceRow row:form.getRows()) {

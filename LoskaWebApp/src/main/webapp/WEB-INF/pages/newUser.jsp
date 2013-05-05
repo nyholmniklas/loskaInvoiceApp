@@ -16,11 +16,11 @@
 			<form:form method="POST" action="newUser" modelAttribute="user">
 				<form:label path="username">K‰ytt‰j‰tunnus: </form:label>
 				<form:input path="username" />
-				<form:errors path="username" />
+				<form:errors path="username" /><br/>
 				<form:label path="password">Salasana:</form:label>
 				<form:password path="password" />
 				<form:errors path="password" />
-				<input type="submit" value="Rekisterˆidy" />
+				<input  class="myButton"  type="submit" value="Rekisterˆidy" />
 			</form:form>
 			<a href='<c:url value="/login"/>'>Kirjaudu sis‰‰n olemassaolevilla tunnuksilla.</a>
 		</div>

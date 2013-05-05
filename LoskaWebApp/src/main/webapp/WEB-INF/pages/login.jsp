@@ -23,10 +23,10 @@
 			<h2>Kirjaudu Sis‰‰n</h2>
 			<form name='f' action="<c:url value='j_spring_security_check' />"
 				method='POST'>
-				K‰ytt‰j‰tunnus: <input type='text' name='j_username' value='' />
+				K‰ytt‰j‰tunnus: <input type='text' name='j_username' value='' /><br>
 				Salasana: <input type='password' name='j_password' />
-				<br> 
-				<input name="submit" type="submit" value="Kirjaudu" />
+				<br/> 
+				<input class="myButton" name="submit" type="submit" value="Kirjaudu" />
 			</form>
 			<a href='<c:url value="/newUser"/>'>Luo uusi k‰ytt‰j‰tili.</a>
 		</div>
