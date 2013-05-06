@@ -34,7 +34,7 @@ box-shadow:         1px 1px 5px rgba(50, 50, 50, 0.59);
 text-align:center
 }
     
-#invoice_form table {
+form table {
 	font-family: 'helvetica';
 	font-size:11px;
 	color:black;

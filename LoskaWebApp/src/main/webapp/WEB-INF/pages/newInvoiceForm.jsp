@@ -144,7 +144,7 @@
 		<div class="grid_3 prefix_7">
 	<br/>
 			<input type="submit" class="myButton" value="Luo lasku" /> <a
-				href='<c:url value="/index"/>'><input class="myButton"
+				href='<c:url value="/invoices"/>'><input class="myButton"
 				type="button" value="Peruuta" /></a>
 		</div>
 </form:form>
