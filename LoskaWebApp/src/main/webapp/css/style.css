@@ -1,3 +1,7 @@
+.validation_error {
+	color: red;
+}
+
 h1 {
 	color:#885334;
 }
@@ -35,7 +39,6 @@ text-align:center
 }
     
 form table {
-	font-family: 'helvetica';
 	font-size:11px;
 	color:black;
 	width:100%;
@@ -45,10 +48,10 @@ table th {
 	background:#fde5bb;
 	padding: 8px;
 }
-#invoice_form table td {
-	background:white;
-	padding: 8px;
-}
+/* #invoice_form table td { */
+/* 	background:white; */
+/* 	padding: 8px; */
+/* } */
  
 #hor-zebra
 {

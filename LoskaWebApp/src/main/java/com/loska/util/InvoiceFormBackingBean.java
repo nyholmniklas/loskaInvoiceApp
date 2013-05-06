@@ -18,10 +18,12 @@ public class InvoiceFormBackingBean {
 	private int invoiceId;
 
 	// private Integer reference;
-
+//	@NotBlank
 	private Date date;
+//	@NotBlank
 	private Date due_date;
-	 private String description;
+	@NotBlank
+	private String description;
 
 	// Ship to
 //	@NotBlank
@@ -37,16 +39,16 @@ public class InvoiceFormBackingBean {
 	private String ship_to_country;
 
 	// Bill to
-//	@NotBlank
+	@NotBlank
 	private String bill_to_name;
 	private String bill_to_name2;
-//	@NotBlank
+	@NotBlank
 	private String bill_to_address;
-//	@NotBlank
+	@NotBlank
 	private String bill_to_postcode;
-//	@NotBlank
+	@NotBlank
 	private String bill_to_city;
-//	@NotBlank
+	@NotBlank
 	private String bill_to_country;
 
 	// Product rows

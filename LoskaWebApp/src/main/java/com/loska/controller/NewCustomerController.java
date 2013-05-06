@@ -1,5 +1,7 @@
 package com.loska.controller;
 
+
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,23 +36,15 @@ public class NewCustomerController {
 	@Autowired
 	private UserDAO userDAO;
 	
-	@InitBinder
-	public void setDataBinder(WebDataBinder dataBinder) {
-		dataBinder.setAutoGrowNestedPaths(false);
-	}
-	
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView getNewCustomerForm(ModelMap model) {
-		
 		return new ModelAndView("newCustomer", "customerForm", new CustomerFormBackingBean());
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public String createNewCustomer(@Valid @ModelAttribute CustomerFormBackingBean customerForm,
+	public String createNewCustomer(@Valid @ModelAttribute("customerForm") CustomerFormBackingBean customerForm,
 			BindingResult result, ModelMap model) {
-		
 		if (result.hasErrors()) {
-			System.out.println("got here");
 			return "newCustomer";
 		}
 		
@@ -60,6 +54,6 @@ public class NewCustomerController {
 		CustomerFormConverter converter = new CustomerFormConverter();
 		Customer customer = converter.convertFormToCustomer(customerForm, user);
 		customerDAO.insertCustomer(customer);
-		return "redirect:index";
+		return "redirect:customers";
 	}
 }

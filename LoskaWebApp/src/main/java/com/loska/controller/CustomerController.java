@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,6 +33,8 @@ public class CustomerController {
 	private CustomerDAO customerDAO;
 	@Autowired
 	private UserDAO userDAO;
+	@Autowired
+	private Validator validator;
 	
 	@RequestMapping(value="/editCustomer", method=RequestMethod.GET)
 	public ModelAndView editCustomer(@RequestParam Integer customer_id, ModelMap model){
@@ -70,15 +73,20 @@ public class CustomerController {
 	}
 	
 	@RequestMapping(value="/editCustomer", method=RequestMethod.POST)
-	public String updateCustomer(@Valid @ModelAttribute CustomerFormBackingBean form,
+	public String updateCustomer(@Valid @ModelAttribute("customerForm") CustomerFormBackingBean form,
 			BindingResult result, ModelMap model){
+		if (result.hasErrors()) {
+			return "editCustomer";
+		}
+		
 		//TODO CHECK IF CUSTOMER'S USERID MATCHES SESSION USER ID!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		int userId = userSession.getUserId();
 		User user = userDAO.findByUserId(userId);
+		
 		CustomerFormConverter converter = new CustomerFormConverter();
 		Customer customer = converter.convertFormToCustomer(form, user);
 		customer.setCustomer_id(Integer.parseInt(form.getCustomer_id()));
 		customerDAO.updateCustomer(customer);
-		return "redirect:index";
+		return "redirect:customers";
 	}
 }

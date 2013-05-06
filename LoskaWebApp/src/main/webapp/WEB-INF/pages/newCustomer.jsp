@@ -10,7 +10,7 @@
 </head>
 <body>
 	<jsp:include page="header.jsp" />
-	<div class="container_12" id="container_are">
+	<div class="container_12" id="container_area">
 		<div class="grid_11 prefix_1">
 		<h2>Luo Uusi Asiakas</h2>
 			<jsp:include page="newCustomerForm.jsp" />

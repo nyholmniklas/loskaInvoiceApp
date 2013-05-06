@@ -1,10 +1,16 @@
 package com.loska.model;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 public class InvoiceRow {
 	private Integer row_id;
+	@NotBlank
 	private String name;
+	@NotBlank
 	private Integer ammount;
+	@NotBlank
 	private Float price;
+	@NotBlank
 	private Float tax;
 	
 	public Integer getRow_id() {

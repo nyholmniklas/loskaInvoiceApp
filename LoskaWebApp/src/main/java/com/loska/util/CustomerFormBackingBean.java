@@ -8,7 +8,9 @@ import org.springframework.stereotype.Component;
 @Scope(value="request")
 public class CustomerFormBackingBean {
 	private Integer userId;
+	@NotBlank
 	private String name;
+	@NotBlank
 	private String y_tunnus;
 	private String customer_id;
 	
@@ -27,16 +29,16 @@ public class CustomerFormBackingBean {
 	
 	
 	//Bill to
-//	@NotBlank
+	@NotBlank
 	private String bill_to_name;
 	private String bill_to_name2;
-//	@NotBlank
+	@NotBlank
 	private String bill_to_address;
-//	@NotBlank
+	@NotBlank
 	private String bill_to_postcode;
-//	@NotBlank
+	@NotBlank
 	private String bill_to_city;
-//	@NotBlank
+	@NotBlank
 	private String bill_to_country;
 	
 	public Integer getUserId() {

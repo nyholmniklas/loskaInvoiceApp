@@ -26,8 +26,7 @@
 				<sec:authorize ifNotGranted="ROLE_USER">
 									<img src="images/header_anon.jpg"">
 				</sec:authorize>
-
-			</div>
+</div>
 		</div>
 	</div>
 </body>

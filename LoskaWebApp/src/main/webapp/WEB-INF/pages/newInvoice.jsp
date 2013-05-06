@@ -1,3 +1,4 @@
+<%@page trimDirectiveWhitespaces="true"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
@@ -28,14 +29,10 @@
 </head>
 <body>
 	<jsp:include page="header.jsp" />
-	<div class="container_12">
-		<div id="container_area">
-			<div class="grid_3 prefix_1">
-				<h2>Luo Uusi Lasku</h2>
-			</div>
-			<div id="new_invoice_form" class="grid_11 prefix_1">
-				<jsp:include page="newInvoiceForm.jsp" />
-			</div>
+	<div class="container_12" id="container_area">
+		<div class="grid_11 prefix_1">
+			<h2>Luo Uusi Lasku</h2>
+			<jsp:include page="newInvoiceForm.jsp" />
 		</div>
 	</div>
 </body>

@@ -66,7 +66,7 @@ public class NewInvoiceController {
 	}
 	
 	@RequestMapping(value="/newInvoice", method=RequestMethod.POST)
-	public ModelAndView createNewInvoice(@Valid @ModelAttribute InvoiceFormBackingBean form, BindingResult result,
+	public ModelAndView createNewInvoice(@Valid @ModelAttribute("invoiceForm") InvoiceFormBackingBean form, BindingResult result,
 			ModelMap model) {
 		
 		if (result.hasErrors()) {

@@ -15,11 +15,11 @@
 			<h2>Luo Uusi K‰ytt‰j‰tili</h2>
 			<form:form method="POST" action="newUser" modelAttribute="user">
 				<form:label path="username">K‰ytt‰j‰tunnus: </form:label>
-				<form:input path="username" />
-				<form:errors path="username" /><br/>
+				<form:input path="username" /><br>
+				<form:errors path="username" cssClass="validation_error" /><br/>
 				<form:label path="password">Salasana:</form:label>
-				<form:password path="password" />
-				<form:errors path="password" />
+				<form:password path="password" /><br>
+				<form:errors path="password" cssClass="validation_error" />
 				<input  class="myButton"  type="submit" value="Rekisterˆidy" />
 			</form:form>
 			<a href='<c:url value="/login"/>'>Kirjaudu sis‰‰n olemassaolevilla tunnuksilla.</a>
