@@ -112,7 +112,8 @@
 	</div>
 	<div class="grid_9 suffix_2">
 		<div id="list">
-			<table>
+			<table id="invoice_row_table">
+				<thead>
 				<tr>
 <!-- 					<th>Nimi</th> -->
 					<th>Kpl</th>
@@ -121,6 +122,8 @@
 					<th>Yht</th>
 					<td><a href="#" class="list-add">Add</a></td>
 				</tr>
+				</thead>
+				<tbody>
 				<c:forEach items="${invoiceForm.rows}" var="row" varStatus="status">
 					<!-- 					<div > -->
 					<tr class="list-item">
@@ -132,12 +135,12 @@
 							value="${row.price}" /></td>
 						<td><input name="rows[${status.index}].tax" id="rows[${status.index}].tax"
 							value="${row.tax}" /></td>
-						<td><div class="total_inc_tax"></div></td>
+						<td><div class="total_inc_tax">0</div></td>
 						<td><a href="#" class="list-remove">Poista</a></td>
 					</tr>
 					<!-- 			</div> -->
 				</c:forEach>
-
+				</tbody>
 			</table>
 
 		</div>
