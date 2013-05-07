@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <form:form method="POST" action="newInvoice"
 	modelAttribute="invoiceForm" id="invoice_form">
-	<div class="grid_3">
+	<div class="grid_3 prefix_1">
 		<table>
 			<tr>
 				<th colspan="2">Maksuehdot:</th>
@@ -59,7 +59,7 @@
 			</table>
 		</div>
 		<!-- 		Ship to -->
-		<div id="ship_to" class="grid_3 sufix_1">
+		<div id="ship_to" class="grid_3">
 
 			<table>
 				<tr>
@@ -99,18 +99,18 @@
 		</div>
 	</div>
 
-	<div class="grid_10 suffix_2">
+	<div class="grid_10 prefix_1 suffix_1">
 		<table>
 			<tr>
 				<th><form:label path="description">Saate:</form:label></th>
 			</tr>
 			<tr>
-				<td><form:input path="description" width="100%" /><br> <form:errors
+				<td><form:input path="description" cssClass="description" /><br> <form:errors
 						path="description" cssClass="validation_error" /></td>
 			</tr>
 		</table>
 	</div>
-	<div class="grid_9 suffix_2">
+	<div class="grid_10 prefix_1 suffix_1"">
 		<div id="list">
 			<table id="invoice_row_table">
 				<thead>
@@ -132,9 +132,13 @@
 							<td><input name="rows[${status.index}].ammount"
 								id="rows[${status.index}].ammount" value="${row.ammount}" /></td>
 							<td><input name="rows[${status.index}].price"
-								id="rows[${status.index}].price" value="${row.price}" /></td>
-							<td><input name="rows[${status.index}].tax"
-								id="rows[${status.index}].tax" value="${row.tax}" /></td>
+								id="rows[${status.index}].price" value="${row.price}" value="0.00"/></td>
+							<td><select name="rows[${status.index}].tax"
+								id="rows[${status.index}].tax" value="${row.tax}">
+									<option value="24">24%</option>
+									<option value="14">14%</option>
+									<option value="10">10%</option>
+							</select></td>
 							<td><span class="total_inc_tax">0.00</span><span>EUR</span></td>
 							<td><a href="#" class="list-remove"
 								onClick="calculateGrandTotal()">Poista</a></td>
@@ -145,7 +149,7 @@
 			</table>
 
 		</div>
-		<div class="grid_2 prefix_7 suffix_4">
+		<div class="grid_2 prefix_8 suffix_3">
 			<b><span id="grandtotal">0.00</span></b><span> EUR</span>
 		</div>
 		<div class="grid_3">

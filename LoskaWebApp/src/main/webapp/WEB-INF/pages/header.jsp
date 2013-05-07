@@ -1,9 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-
-<!-- 	<div id="header_area"> -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><head>
+<link href='http://fonts.googleapis.com/css?family=Noto+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+</head>
 		<div class="container_12" id="header_area">
 			<div id="header" class="grid_12">
 				<sec:authorize ifAnyGranted="ROLE_USER">
@@ -26,5 +25,4 @@
 				</sec:authorize>
 			</div>
 		</div>
-<!-- 	</div> -->
 

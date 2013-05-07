@@ -32,10 +32,10 @@
 <body>
 	<jsp:include page="header.jsp" />
 	<div class="container_12" id="container_area">
-		<div class="grid_11 prefix_1">
-			<h2>Luo Uusi Lasku</h2>
+<!-- 		<div class="grid_12"> -->
+			<div class="grid_11 prefix_1"><h2>Luo Uusi Lasku</h2></div>
 			<jsp:include page="newInvoiceForm.jsp" />
-		</div>
+<!-- 		</div> -->
 	</div>
 </body>
 </html>

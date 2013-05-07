@@ -1,3 +1,7 @@
+body {	
+font-family: 'Noto Sans', sans-serif;
+}
+
 .validation_error {
 	color: red;
 }
@@ -62,14 +66,14 @@ table th {
  
 #hor-zebra
 {
-	font-size: 12px;
-	width: 480px;
+/* 	font-size: 12px; */
+	width: 100%;
 	text-align: left;
 	border-collapse: collapse;
 }
 #hor-zebra th
 {
-	font-size: 14px;
+/* 	font-size: 14px; */
 	font-weight: normal;
 	padding: 10px 8px;
 	color: black;
@@ -112,7 +116,7 @@ table th {
         
         display:inline-block;
         color:#ffffff;
-        font-family:arial;
+/*         font-family:arial; */
         font-size:13px;
         font-weight:normal;
         padding:6px 24px;
