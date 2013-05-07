@@ -17,7 +17,7 @@
 		</div>
 		<div id="login_area" class="grid_4">
 
-			<h1>Kirjaudu Sis‰‰n</h1>
+			<h1>Kirjaudu sis‰‰n</h1>
 			<form name='f' action="<c:url value='j_spring_security_check' />"
 				method='POST'>
 
@@ -29,8 +29,8 @@
 							</div>
 						</c:if>
 					</h3>
-					<p>K‰ytt‰j‰tunnus: <input type='text' name='j_username' value='' /></p>
-					<p>Salasana: <input type='password' name='j_password' /></p>
+					<p><input type='text' name='j_username' value='' placeholder="K‰ytt‰j‰tunnus"/></p>
+					<p><input type='password' name='j_password' placeholder="Salasana"/></p>
 						<p><input class="myButton" name="submit" type="submit" value="Kirjaudu" /></p>
 
 						<p><a href='<c:url value="/newUser"/>'>Luo uusi k‰ytt‰j‰tili.</a></p>

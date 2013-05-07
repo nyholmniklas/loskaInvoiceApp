@@ -11,8 +11,8 @@
 <body>
 	<jsp:include page="header.jsp" />
 	<div id="container_area" class="container_12">
-<!-- 		<div id="index_links" class="grid_4 prefix_1"> -->
-<!-- 						<h2>Terveltuloa</h2> -->
+		<div id="index_links" class="grid_4 prefix_1">
+						<h2>Tervetuloa</h2>
 <%-- 			<li><a href='<c:url value="/newInvoice"/>'>Luo uusi lasku</a></li> --%>
 <%-- 			<li><a href='<c:url value="/invoices"/>'>Näytä omat laskut</a></li> --%>
 <%-- 			<li><a href='<c:url value="/newCustomer"/>'>Luo uusi asiakas</a></li> --%>
@@ -20,8 +20,8 @@
 <!-- 					asiakkaat</a></li> -->
 <%-- 			<li><a href="<c:url value="/j_spring_security_logout" />">Kirjaudu --%>
 <!-- 					ulos</a></li> -->
-<!-- 		</div> -->
-<div class="grid_8 prefix_1"><br><img src="images/index_splash.jpg"></div>
+		</div>
+<!-- <div class="grid_8 prefix_1"><br><img src="images/index_splash.jpg"></div> -->
 	</div>
 </body>
 </html>

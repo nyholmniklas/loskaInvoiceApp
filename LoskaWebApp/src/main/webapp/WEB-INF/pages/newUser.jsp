@@ -19,7 +19,7 @@
 				<form:errors path="username" cssClass="validation_error" /><br/>
 				<form:label path="password">Salasana:</form:label>
 				<form:password path="password" /><br>
-				<form:errors path="password" cssClass="validation_error" />
+				<form:errors path="password" cssClass="validation_error" /><br>
 				<input  class="myButton"  type="submit" value="Rekisterˆidy" />
 			</form:form>
 			<a href='<c:url value="/login"/>'>Kirjaudu sis‰‰n olemassaolevilla tunnuksilla.</a>

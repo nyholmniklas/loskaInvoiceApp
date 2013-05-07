@@ -20,7 +20,7 @@
 	</div>
 	<div id="address_info">
 		<!-- 		Bill to -->
-		<div id="bill_to" class="grid_3">
+		<div id="bill_to" class="grid_3 prefix_1">
 			<table>
 				<tr>
 					<th colspan="2">Laskutusosoite:</th>
@@ -58,7 +58,7 @@
 			</table>
 		</div>
 		<!-- 		Ship to -->
-		<div id="ship_to" class="grid_3 sufix_2">
+		<div id="ship_to" class="grid_3 sufix_1">
 
 			<table>
 				<tr>
@@ -110,11 +110,11 @@
 			</tr>
 		</table>
 	</div>
-	<div class="grid_10 suffix_2">
+	<div class="grid_9 suffix_2">
 		<div id="list">
 			<table>
 				<tr>
-					<th>Nimi</th>
+<!-- 					<th>Nimi</th> -->
 					<th>Kpl</th>
 					<th>Hinta</th>
 					<th>ALV</th>
@@ -124,15 +124,15 @@
 				<c:forEach items="${invoiceForm.rows}" var="row" varStatus="status">
 					<!-- 					<div > -->
 					<tr class="list-item">
-						<td><input name="rows[${status.index}].name"
-							value="${row.name}" /></td>
-						<td><input name="rows[${status.index}].ammount"
+<%-- 						<td><input name="rows[${status.index}].name" --%>
+<%-- 							value="${row.name}" ></td> --%>
+						<td><input name="rows[${status.index}].ammount" id="rows[${status.index}].ammount"
 							value="${row.ammount}" /></td>
-						<td><input name="rows[${status.index}].price"
+						<td><input name="rows[${status.index}].price" id="rows[${status.index}].price"
 							value="${row.price}" /></td>
-						<td><input name="rows[${status.index}].tax"
+						<td><input name="rows[${status.index}].tax" id="rows[${status.index}].tax"
 							value="${row.tax}" /></td>
-						<td></td>
+						<td><div class="total_inc_tax"></div></td>
 						<td><a href="#" class="list-remove">Poista</a></td>
 					</tr>
 					<!-- 			</div> -->
@@ -146,4 +146,5 @@
 				href='<c:url value="/invoices"/>'><input class="myButton"
 				type="button" value="Peruuta" /></a>
 		</div>
+	/</div>
 </form:form>
