@@ -52,7 +52,7 @@ public class NewInvoiceController {
 		
 		InvoiceRow row = new InvoiceRow();
 //		row.setName("Nimi");
-//		row.setAmmount(1);
+		row.setAmmount(1);
 //		row.setPrice(15f);
 //		row.setTax(24f);
 		form.getRows().add(row);
@@ -95,6 +95,7 @@ public class NewInvoiceController {
 		Customer customer = customerDAO.findCustomerById(Integer.parseInt(customer_id));
 		
 		InvoiceRow row = new InvoiceRow();
+		row.setAmmount(1);
 		form.getRows().add(row);
 		
 		//set date

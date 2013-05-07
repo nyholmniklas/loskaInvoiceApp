@@ -22,15 +22,19 @@ $(document).ready(function () {
 });
 
 function calculateRow(row) {
-    var price = +row.find('input[name$="price"]').val();
-    var qty = +row.find('input[name$="ammount"]').val();
-    row.find('.total_inc_tax').html((price * qty));
+    var price = parseFloat(row.find('input[name$="price"]').val());
+    var qty = parseFloat(row.find('input[name$="ammount"]').val());
+    var rowtotal = parseFloat(price * qty).toFixed(2);
+    if (isNaN(rowtotal)) rowtotal = 0;
+    row.find(".total_inc_tax").html(rowtotal);
+    return parseFloat(rowtotal);
 }
 
 function calculateGrandTotal() {
     var grandTotal = 0;
-    $("table.invoice_row_table").find('.total_inc_tax').each(function () {
-        grandTotal += +$(this).val();
+    $('input[name$="price"]').each(function () {
+        grandTotal += parseFloat(calculateRow($(this).closest("tr")));
     });
-    $("#grandtotal").text(grandTotal.toFixed(2));
+//    alert(grandTotal);
+    $("#grandtotal").html(grandTotal.toFixed(2));
 }

@@ -1,15 +1,16 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<form:form method="POST" action="newInvoice" modelAttribute="invoiceForm" id="invoice_form">
-		<div class="grid_3">
+<form:form method="POST" action="newInvoice"
+	modelAttribute="invoiceForm" id="invoice_form">
+	<div class="grid_3">
 		<table>
 			<tr>
 				<th colspan="2">Maksuehdot:</th>
 			</tr>
 			<tr>
 				<td><form:label path="date">Pvm: </form:label></td>
-				<td><form:input path="date" class="datepicker" /><br> 
-				<form:errors path="ship_to_country" cssClass="validation_error" /></td>
+				<td><form:input path="date" class="datepicker" /><br> <form:errors
+						path="ship_to_country" cssClass="validation_error" /></td>
 			</tr>
 			<tr>
 				<td><form:label path="due_date">Eräpäivä:</form:label></td>
@@ -104,9 +105,8 @@
 				<th><form:label path="description">Saate:</form:label></th>
 			</tr>
 			<tr>
-				<td><form:input path="description" width="100%" /><br>
-				 <form:errors
-							path="description" cssClass="validation_error" /></td>
+				<td><form:input path="description" width="100%" /><br> <form:errors
+						path="description" cssClass="validation_error" /></td>
 			</tr>
 		</table>
 	</div>
@@ -114,40 +114,44 @@
 		<div id="list">
 			<table id="invoice_row_table">
 				<thead>
-				<tr>
-<!-- 					<th>Nimi</th> -->
-					<th>Kpl</th>
-					<th>Hinta</th>
-					<th>ALV</th>
-					<th>Yht</th>
-					<td><a href="#" class="list-add">Add</a></td>
-				</tr>
+					<tr>
+						<th>Nimi</th>
+						<th>Kpl</th>
+						<th>Hinta</th>
+						<th>ALV</th>
+						<th>Yht</th>
+						<td><a href="#" class="list-add"
+							onClick="calculateGrandTotal()">Add</a></td>
+					</tr>
 				</thead>
 				<tbody>
-				<c:forEach items="${invoiceForm.rows}" var="row" varStatus="status">
-					<!-- 					<div > -->
-					<tr class="list-item">
-<%-- 						<td><input name="rows[${status.index}].name" --%>
-<%-- 							value="${row.name}" ></td> --%>
-						<td><input name="rows[${status.index}].ammount" id="rows[${status.index}].ammount"
-							value="${row.ammount}" /></td>
-						<td><input name="rows[${status.index}].price" id="rows[${status.index}].price"
-							value="${row.price}" /></td>
-						<td><input name="rows[${status.index}].tax" id="rows[${status.index}].tax"
-							value="${row.tax}" /></td>
-						<td><div class="total_inc_tax">0</div></td>
-						<td><a href="#" class="list-remove">Poista</a></td>
-					</tr>
-					<!-- 			</div> -->
-				</c:forEach>
+					<c:forEach items="${invoiceForm.rows}" var="row" varStatus="status">
+						<tr class="list-item">
+							<td><input name="rows[${status.index}].name"
+								id="rows[${status.index}].ammount" value="${row.name}" /></td>
+							<td><input name="rows[${status.index}].ammount"
+								id="rows[${status.index}].ammount" value="${row.ammount}" /></td>
+							<td><input name="rows[${status.index}].price"
+								id="rows[${status.index}].price" value="${row.price}" /></td>
+							<td><input name="rows[${status.index}].tax"
+								id="rows[${status.index}].tax" value="${row.tax}" /></td>
+							<td><span class="total_inc_tax">0.00</span><span>EUR</span></td>
+							<td><a href="#" class="list-remove"
+								onClick="calculateGrandTotal()">Poista</a></td>
+						</tr>
+
+					</c:forEach>
 				</tbody>
 			</table>
 
 		</div>
-		<div class="grid_3 prefix_7">
-			<br /> <input type="submit" class="myButton" value="Luo lasku" /> <a
+		<div class="grid_2 prefix_7 suffix_4">
+			<b><span id="grandtotal">0.00</span></b><span> EUR</span>
+		</div>
+		<div class="grid_3">
+			<br /> <input type="submit" class="myButton" value="Luo lasku" /><a
 				href='<c:url value="/invoices"/>'><input class="myButton"
 				type="button" value="Peruuta" /></a>
 		</div>
-	/</div>
+	</div>
 </form:form>

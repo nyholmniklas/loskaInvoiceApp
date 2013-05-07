@@ -102,7 +102,7 @@
 		</div>
 	</div>
 	<div class="grid_4 prefix_6">
-		<br /> <input type="submit" class="myButton" value="Luo uusi asiakas" /><a
-			href='<c:url value="/customers"/>'> <input class="myButton" type="button" value="Peruuta" /></a>
+		<br /> <input type="submit" class="myButton" value="Luo uusi asiakas" /><a href='<c:url value="/customers"/>'>
+		<input class="myButton" type="button" value="Peruuta" /></a>
 	</div>
 </form:form>
