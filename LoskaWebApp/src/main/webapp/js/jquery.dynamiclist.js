@@ -25,7 +25,7 @@
             addClass: "list-add",
             removeClass: "list-remove",
             minSize: 1,
-            maxSize: 10,
+            maxSize: 100,
             withEvents: false,
             addCallbackFn: null,
             removeCallbackFn: null

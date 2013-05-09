@@ -53,7 +53,7 @@ public class NewInvoiceController {
 		InvoiceRow row = new InvoiceRow();
 //		row.setName("Nimi");
 		row.setAmmount(1);
-//		row.setPrice(15f);
+		row.setPrice(0f);
 //		row.setTax(24f);
 		form.getRows().add(row);
 		//set date

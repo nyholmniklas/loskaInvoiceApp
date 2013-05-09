@@ -105,8 +105,8 @@
 				<th><form:label path="description">Saate:</form:label></th>
 			</tr>
 			<tr>
-				<td><form:input path="description" cssClass="description" /><br> <form:errors
-						path="description" cssClass="validation_error" /></td>
+				<td><form:input path="description" cssClass="description" /><br>
+					<form:errors path="description" cssClass="validation_error" /></td>
 			</tr>
 		</table>
 	</div>
@@ -118,7 +118,8 @@
 						<th>Nimi</th>
 						<th>Kpl</th>
 						<th>Hinta</th>
-						<th>ALV</th>
+						<th>Veroton</th>
+						<th>Veroton</th>
 						<th>Yht</th>
 						<td><a href="#" class="list-add"
 							onClick="calculateGrandTotal()">Add</a></td>
@@ -128,29 +129,32 @@
 					<c:forEach items="${invoiceForm.rows}" var="row" varStatus="status">
 						<tr class="list-item">
 							<td><input name="rows[${status.index}].name"
-								id="rows[${status.index}].ammount" value="${row.name}" /></td>
+								id="rows[${status.index}].name" value="${row.name}" /></td>
 							<td><input name="rows[${status.index}].ammount"
 								id="rows[${status.index}].ammount" value="${row.ammount}" /></td>
 							<td><input name="rows[${status.index}].price"
-								id="rows[${status.index}].price" value="${row.price}" value="0.00"/></td>
+								id="rows[${status.index}].price" value="${row.price}" /></td>
+
 							<td><select name="rows[${status.index}].tax"
-								id="rows[${status.index}].tax" value="${row.tax}">
+								id="rows[${status.index}].tax">
 									<option value="24">24%</option>
 									<option value="14">14%</option>
 									<option value="10">10%</option>
 							</select></td>
-							<td><span class="total_inc_tax">0.00</span><span>EUR</span></td>
+							<td><span class="total_without_tax">0.00</span><span>
+									EUR</span></td>
+							<td><span class="total_inc_tax">0.00</span><span> EUR</span></td>
 							<td><a href="#" class="list-remove"
 								onClick="calculateGrandTotal()">Poista</a></td>
 						</tr>
-
 					</c:forEach>
 				</tbody>
 			</table>
 
 		</div>
-		<div class="grid_2 prefix_8 suffix_3">
-			<b><span id="grandtotal">0.00</span></b><span> EUR</span>
+		<div class="grid_2 prefix_7 suffix_4">
+		Yht. ilm.alv <span id="grandtotal_taxfree">0.00</span><span> EUR</span><br>
+			Yht <b><span id="grandtotal">0.00</span></b><span> EUR</span>
 		</div>
 		<div class="grid_3">
 			<br /> <input type="submit" class="myButton" value="Luo lasku" /><a

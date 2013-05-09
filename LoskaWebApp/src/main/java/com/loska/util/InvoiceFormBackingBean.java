@@ -3,6 +3,8 @@ package com.loska.util;
 import java.sql.Date;
 import java.util.Iterator;
 
+import javax.validation.Valid;
+
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.stereotype.Component;
@@ -52,6 +54,7 @@ public class InvoiceFormBackingBean {
 	private String bill_to_country;
 
 	// Product rows
+	@Valid
 	private AutoPopulatingList<InvoiceRow> rows = new AutoPopulatingList<InvoiceRow>(
 			InvoiceRow.class);
 
