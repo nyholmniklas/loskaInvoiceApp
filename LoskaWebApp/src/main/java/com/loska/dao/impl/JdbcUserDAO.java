@@ -125,4 +125,10 @@ public class JdbcUserDAO implements UserDAO{
 		this.dataSource = dataSource;
 	}
 
+	@Override
+	public boolean update(User user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

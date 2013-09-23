@@ -54,7 +54,7 @@ public class InvoiceFormBackingBean {
 	private String bill_to_country;
 
 	// Product rows
-	@Valid
+//	@Valid
 	private AutoPopulatingList<InvoiceRow> rows = new AutoPopulatingList<InvoiceRow>(
 			InvoiceRow.class);
 
