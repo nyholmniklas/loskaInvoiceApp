@@ -35,34 +35,35 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 	@Override
 	public Invoice findInvoiceById(int id) {
 		Invoice invoice = new Invoice();
-		String sql = "SELECT * FROM invoices WHERE invoice_id ='" + id + "';";
+		String sql = "SELECT * FROM invoices WHERE invoice_id =?;";
 		Connection conn = null;
 		try {
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
-		
+
 			rs.next();
-			
-			//Get and set the user
+
+			// Get and set the user
 			User user = userDAO.findByUserId(rs.getInt("user_id"));
 			invoice.setUser(user);
 			invoice.setInvoice_id(rs.getInt("invoice_id"));
-			
-			//Get and set all "invoice rows"
+
+			// Get and set all "invoice rows"
 			invoice.setRows(getAllRowsForInvoiceByInvoiceId(id));
-			
-			//TODO Fetch all other invoice info(dates, etc)
+
+			// TODO Fetch all other invoice info(dates, etc)
 			invoice.setDate(rs.getDate("date"));
 			invoice.setDue_date(rs.getDate("due_date"));
 			invoice.setDescription(rs.getString("description"));
 
-			//Get and set adress info for invoice
+			// Get and set adress info for invoice
 			Address bill = new Address();
 			Address ship = new Address();
-			sql = "SELECT * FROM address_info WHERE address_info_id='" 
-					+ rs.getInt("address_info_id")+"';";
+			sql = "SELECT * FROM address_info WHERE address_info_id=?;";
 			ps = conn.prepareStatement(sql);
+			ps.setInt(1, rs.getInt("address_info_id"));
 			rs = ps.executeQuery();
 			rs.next();
 			bill.setName(rs.getString("bill_to_name"));
@@ -80,19 +81,17 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 			invoice.setBill_to(bill);
 			invoice.setShip_to(ship);
 
-		}
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		 finally {
-				if (conn != null) {
-					try {
-						conn.close();
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
-		 }
+			}
+		}
 		return invoice;
 	}
 
@@ -100,12 +99,13 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 	// Currently not working
 	public List<Invoice> getAllInvoicesBelongingToUserId(int user_Id) {
 		ArrayList<Invoice> invoices = new ArrayList<Invoice>();
-		String sql = "SELECT user_id, invoice_id " + "FROM invoices WHERE user_id='"+user_Id+"'";
+		String sql = "SELECT user_id, invoice_id "
+				+ "FROM invoices WHERE user_id=?";
 		Connection conn = null;
 		try {
 			conn = dataSource.getConnection();
-			System.out.println(sql);
 			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, user_Id);
 			ResultSet rs = ps.executeQuery();
 
 			// Get the invoices
@@ -185,18 +185,13 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 			// Insert rows
 			// This is not efficient look into IT!!!!!!
 			for (InvoiceRow row : invoice.getRows()) {
-				String insertRows = ("INSERT INTO invoice_rows (invoice_id, product_name, ammount, price, tax_percent) VALUES ("
-						+ invoice_id
-						+ ", \""
-						+ row.getName()
-						+ "\", "
-						+ row.getAmmount()
-						+ ","
-						+ row.getPrice()
-						+ ", "
-						+ row.getTax() + ");");
+				String insertRows = ("INSERT INTO invoice_rows (invoice_id, product_name, ammount, price, tax_percent) VALUES (?,?,?,?,?);");
 				ps = conn.prepareStatement(insertRows);
-				System.out.println(insertRows);
+				ps.setInt(1, invoice_id);
+				ps.setString(2, row.getName());
+				ps.setInt(3, row.getAmmount());
+				ps.setFloat(4, row.getPrice());
+				ps.setFloat(5, row.getTax());
 				ps.executeUpdate();
 			}
 
@@ -218,12 +213,12 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 	@Override
 	public InvoiceRow findInvoiceRowById(int rowId) {
 		InvoiceRow row = new InvoiceRow();
-		String sql = "SELECT * FROM invoice_rows WHERE invoice_row_id ='"
-				+ rowId + "';";
+		String sql = "SELECT * FROM invoice_rows WHERE invoice_row_id =?;";
 		Connection conn = null;
 		try {
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, rowId);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				row.setRow_id(rs.getInt("invoice_row_id"));
@@ -235,28 +230,27 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 			ps.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		 finally {
-				if (conn != null) {
-					try {
-						conn.close();
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
-		 }
+			}
+		}
 		return row;
 	}
 
 	@Override
 	public List<InvoiceRow> getAllRowsForInvoiceByInvoiceId(int invoiceId) {
 		ArrayList<InvoiceRow> rows = new ArrayList<InvoiceRow>();
-		String sql = "SELECT * FROM invoice_rows WHERE invoice_id ='"
-				+ invoiceId + "';";
+		String sql = "SELECT * FROM invoice_rows WHERE invoice_id =?;";
 		Connection conn = null;
 		try {
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, invoiceId);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				InvoiceRow row = new InvoiceRow();
@@ -270,16 +264,15 @@ public class JdbcInvoiceDAO implements InvoiceDAO {
 			ps.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		 finally {
-				if (conn != null) {
-					try {
-						conn.close();
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
-		 }
+			}
+		}
 		return rows;
 	}
 }

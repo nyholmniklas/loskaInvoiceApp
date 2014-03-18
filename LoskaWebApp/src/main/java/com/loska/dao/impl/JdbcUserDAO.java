@@ -54,18 +54,20 @@ public class JdbcUserDAO implements UserDAO{
 	//Set auth ROLE_USER for user
 	private void insertUserRole(Connection conn, User user) throws SQLException{
 		String sql = "INSERT INTO user_roles (user_id, authority) " +
-				"VALUES (" + user.getUser_Id() + ", 'ROLE_USER');";
+				"VALUES (?, 'ROLE_USER');";
 		PreparedStatement statement = conn.prepareStatement(sql);
+		statement.setInt(1, user.getUser_Id());
 		statement.executeUpdate();
 	}
 
 	@Override
 	public User findByUserId(int userId) {
-		String sql = "SELECT user_id, username, enabled FROM users WHERE user_id='"+ userId +"'";
+		String sql = "SELECT user_id, username, enabled FROM users WHERE user_id=?";
 		Connection conn = null;
 		try {
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, userId);
 			ResultSet rs = ps.executeQuery();
 			User user = new User();
 			if(rs.next()) {
@@ -92,11 +94,12 @@ public class JdbcUserDAO implements UserDAO{
 	
 	@Override
 	public User findByUsername(String username) {
-		String sql = "SELECT user_id, username, enabled FROM users WHERE username='"+ username +"'";
+		String sql = "SELECT user_id, username, enabled FROM users WHERE username=?";
 		Connection conn = null;
 		try {
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, username);
 			ResultSet rs = ps.executeQuery();
 			User user = new User();
 			if(rs.next()) {
