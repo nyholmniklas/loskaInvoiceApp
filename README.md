@@ -14,13 +14,13 @@ new implementations of the data access object interfaces on the application’s si
 The application as it stands is still missing a lot of features!! 
 
 ##Application Architecture
-![Architecture Diagram](https://raw.github.com/nyholmniklas/LoskaWebApp/master/doc/arch_diagram.jpg)
+![Architecture Diagram](https://raw.github.com/nyholmniklas/LoskaWebApp/master/doc/arch_diagram.png)
 
 ##Database Schema
-![Database Schema](https://raw.github.com/nyholmniklas/LoskaWebApp/master/doc/db_diagram.jpg)
+![Database Schema](https://raw.github.com/nyholmniklas/LoskaWebApp/master/doc/db_diagram.png)
 
 ##Screenshots
 ###Login
-![Login Screenshot](https://raw.github.com/nyholmniklas/LoskaWebApp/master/doc/screenshots/login.jpg)
+![Login Screenshot](https://raw.github.com/nyholmniklas/LoskaWebApp/master/doc/screenshots/login.png)
 ###Create Invoice
-![New Invoice Screenshot](https://raw.github.com/nyholmniklas/LoskaWebApp/master/doc/screenshots/create_invoice.jpg)
+![New Invoice Screenshot](https://raw.github.com/nyholmniklas/LoskaWebApp/master/doc/screenshots/create_invoice.png)
